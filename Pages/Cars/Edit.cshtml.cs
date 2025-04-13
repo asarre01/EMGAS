@@ -32,7 +32,6 @@ namespace EMGAS.Pages.Cars
         public List<RepairDetail> RepairDetails { get; set; } = new List<RepairDetail>();
 
         public SelectList Makes { get; set; }
-        public SelectList Models { get; set; }
         public SelectList Colors { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
@@ -287,9 +286,9 @@ namespace EMGAS.Pages.Cars
             {
                 var commonMakes = new List<string>
                 {
-                    "Audi", "BMW", "Citroen", "Dacia", "Fiat", "Ford", "Honda", "Hyundai", 
-                    "Kia", "Mercedes", "Nissan", "Opel", "Peugeot", "Renault", "Seat", 
-                    "Skoda", "Toyota", "Volkswagen", "Volvo"
+                    "Toyota", "Nissan", "Hyundai", "Kia", "Mitsubishi", "Suzuki", "Renault", 
+                    "Peugeot", "Citroën", "Ford", "Volkswagen", "Mercedes", "BMW", "Audi", 
+                    "Dacia", "Honda", "Isuzu", "Mazda", "Great Wall", "Ssangyong"
                 };
                 
                 foreach (var make in commonMakes)
@@ -304,28 +303,6 @@ namespace EMGAS.Pages.Cars
             }
             
             Makes = new SelectList(makes);
-
-            // Modèles
-            var modelsQuery = _context.Cars.AsQueryable();
-            if (!string.IsNullOrEmpty(Car?.Make))
-            {
-                modelsQuery = modelsQuery.Where(c => c.Make == Car.Make);
-            }
-            
-            var models = await modelsQuery
-                .Select(c => c.Model)
-                .Distinct()
-                .OrderBy(m => m)
-                .ToListAsync();
-                
-            // Ajouter le modèle actuel s'il n'est pas dans la liste
-            if (Car?.Model != null && !models.Contains(Car.Model))
-            {
-                models.Add(Car.Model);
-                models = models.OrderBy(m => m).ToList();
-            }
-            
-            Models = new SelectList(models);
 
             // Couleurs
             var colors = new List<string>

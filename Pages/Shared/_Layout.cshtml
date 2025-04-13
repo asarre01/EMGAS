@@ -28,6 +28,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Cars/Index">Inventaire</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/About">À propos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/CFA">Partenariat CFA</a>
+                        </li>
                         @if (User.IsInRole("Administrator"))
                         {
                             <li class="nav-item dropdown">
@@ -66,10 +72,10 @@
                 <div class="col-md-4">
                     <h5>Contact</h5>
                     <address>
-                        <i class="bi bi-geo-alt-fill"></i> 123 Rue de la République<br />
-                        75001 Paris, France<br />
-                        <i class="bi bi-telephone-fill"></i> <a href="tel:+33123456789" class="text-light">+33 1 23 45 67 89</a><br />
-                        <i class="bi bi-envelope-fill"></i> <a href="mailto:contact@emgas.fr" class="text-light">contact@emgas.fr</a>
+                        <i class="bi bi-geo-alt-fill"></i> 123 Avenue Blaise Diagne<br />
+                        Dakar, Sénégal<br />
+                        <i class="bi bi-telephone-fill"></i> <a href="tel:+221338765432" class="text-light">+221 33 876 54 32</a><br />
+                        <i class="bi bi-envelope-fill"></i> <a href="mailto:contact@emgas.sn" class="text-light">contact@emgas.sn</a>
                     </address>
                 </div>
                 <div class="col-md-4">
@@ -77,6 +83,7 @@
                     <ul class="list-unstyled">
                         <li><a href="/Cars/Index" class="text-light">Inventaire des voitures</a></li>
                         <li><a href="/About" class="text-light">À propos de nous</a></li>
+                        <li><a href="/CFA" class="text-light">Partenariat CFA</a></li>
                         <li><a href="/Privacy" class="text-light">Politique de confidentialité</a></li>
                     </ul>
                 </div>

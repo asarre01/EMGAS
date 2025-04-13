@@ -123,10 +123,21 @@ namespace EMGAS.Data
 
     public enum CarStatus
     {
+        [Display(Name = "En inventaire")]
         InInventory,
+        [Display(Name = "En réparation")]
         UnderRepair,
+        [Display(Name = "À vendre")]
         ForSale,
+        [Display(Name = "Vendue")]
         Sold,
+        [Display(Name = "Non disponible")]
         NotAvailable
+    }
+
+    public class CarInputModel
+    {
+        [Required(ErrorMessage = "La marque est obligatoire")]
+        public string Make { get; set; }
     }
 }

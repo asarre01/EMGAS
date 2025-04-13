@@ -26,7 +26,6 @@ namespace EMGAS.Pages.Cars
         }
 
         public SelectList Makes { get; set; }
-        public SelectList Models { get; set; }
         public SelectList Colors { get; set; }
 
         [BindProperty]
@@ -122,16 +121,13 @@ namespace EMGAS.Pages.Cars
             {
                 makes = new List<string>
                 {
-                    "Audi", "BMW", "Citroen", "Dacia", "Fiat", "Ford", "Honda", "Hyundai", 
-                    "Kia", "Mercedes", "Nissan", "Opel", "Peugeot", "Renault", "Seat", 
-                    "Skoda", "Toyota", "Volkswagen", "Volvo"
+                    "Toyota", "Nissan", "Hyundai", "Kia", "Mitsubishi", "Suzuki", "Renault", 
+                    "Peugeot", "Citroën", "Ford", "Volkswagen", "Mercedes", "BMW", "Audi", 
+                    "Dacia", "Honda", "Isuzu", "Mazda", "Great Wall", "Ssangyong"
                 };
             }
             
             Makes = new SelectList(makes);
-
-            // Modèles (vide par défaut, sera rempli par JavaScript)
-            Models = new SelectList(Enumerable.Empty<string>());
 
             // Couleurs
             var colors = new List<string>

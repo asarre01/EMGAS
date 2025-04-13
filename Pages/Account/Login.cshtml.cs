@@ -40,7 +40,17 @@ namespace EMGAS.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = "")
         {
-            returnUrl ??= Url.Content("~/");
+            // Assurer que returnUrl a une valeur non vide
+            if (string.IsNullOrEmpty(returnUrl))
+            {
+                returnUrl = Url.Content("~/");
+            }
+            
+            // Garantir que même si Url.Content renvoie une chaîne vide, on a une valeur par défaut
+            if (string.IsNullOrEmpty(returnUrl))
+            {
+                returnUrl = "/";
+            }
 
             if (ModelState.IsValid)
             {

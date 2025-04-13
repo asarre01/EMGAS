@@ -1,10 +1,79 @@
 ﻿@page
 @model EMGAS.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Accueil";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-4">
+    <div class="jumbotron bg-light p-5 rounded-3">
+        <h1 class="display-4">Bienvenue chez EMGAS</h1>
+        <p class="lead">Spécialiste de la réparation et de la vente de voitures d'occasion de qualité au Sénégal depuis 2010.</p>
+        <hr class="my-4">
+        <p>Découvrez notre sélection de véhicules soigneusement choisis et préparés par nos techniciens qualifiés pour les routes sénégalaises.</p>
+        <a class="btn btn-primary btn-lg" href="/Cars/Index" role="button">Voir l'inventaire</a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-car-front me-2"></i>Véhicules de qualité</h5>
+                    <p class="card-text">Tous nos véhicules sont rigoureusement inspectés et préparés avant leur mise en vente pour garantir leur fiabilité.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-tools me-2"></i>Service de réparation</h5>
+                    <p class="card-text">Notre atelier est équipé des meilleurs outils et nos techniciens sont formés pour entretenir tous types de véhicules.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-shield-check me-2"></i>Garantie incluse</h5>
+                    <p class="card-text">Tous nos véhicules sont vendus avec une garantie, pour que vous puissiez rouler en toute tranquillité.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Notre engagement</h5>
+                </div>
+                <div class="card-body">
+                    <p>Chez EMGAS, nous nous engageons à:</p>
+                    <ul>
+                        <li>Proposer des véhicules de qualité à des prix compétitifs</li>
+                        <li>Assurer la transparence sur l'historique et l'état des véhicules</li>
+                        <li>Offrir un service client personnalisé et professionnel</li>
+                        <li>Garantir un suivi après-vente de qualité</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Contactez-nous</h5>
+                </div>
+                <div class="card-body">
+                    <p>Vous avez des questions ou vous souhaitez prendre rendez-vous?</p>
+                    <address>
+                        <i class="bi bi-geo-alt-fill"></i> 123 Avenue Blaise Diagne<br>
+                        Dakar, Sénégal<br>
+                        <i class="bi bi-telephone-fill"></i> <a href="tel:+221338765432">+221 33 876 54 32</a><br>
+                        <i class="bi bi-envelope-fill"></i> <a href="mailto:contact@emgas.sn">contact@emgas.sn</a>
+                    </address>
+                    <p>Heures d'ouverture:</p>
+                    <p>Lundi - Vendredi: 8h - 18h<br>Samedi: 9h - 16h<br>Dimanche: Fermé</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

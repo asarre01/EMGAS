@@ -33,9 +33,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Car.Model" class="control-label">Modèle</label>
-                                    <select asp-for="Car.Model" class="form-select" asp-items="Model.Models">
-                                        <option value="">-- Sélectionner un modèle --</option>
-                                    </select>
+                                    <input asp-for="Car.Model" class="form-control" />
                                     <span asp-validation-for="Car.Model" class="text-danger"></span>
                                 </div>
                             </div>
@@ -88,7 +86,7 @@
                                 <div class="form-group">
                                     <label asp-for="Car.PurchasePrice" class="control-label">Prix d'achat</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">€</span>
+                                        <span class="input-group-text">FCFA</span>
                                         <input asp-for="Car.PurchasePrice" class="form-control" min="0" step="0.01" />
                                     </div>
                                     <span asp-validation-for="Car.PurchasePrice" class="text-danger"></span>
@@ -98,7 +96,7 @@
                                 <div class="form-group">
                                     <label asp-for="Car.SellingPrice" class="control-label">Prix de vente</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">€</span>
+                                        <span class="input-group-text">FCFA</span>
                                         <input asp-for="Car.SellingPrice" class="form-control" min="0" step="0.01" />
                                     </div>
                                     <span asp-validation-for="Car.SellingPrice" class="text-danger"></span>
@@ -211,7 +209,7 @@
                                     <tr>
                                         <td>@repair.RepairDate.ToShortDateString()</td>
                                         <td>@repair.Description</td>
-                                        <td>@repair.Cost.ToString("C")</td>
+                                        <td>@repair.Cost.ToString("N0") FCFA</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-danger" 
                                                     onclick="deleteRepair(@repair.Id)">
@@ -222,7 +220,7 @@
                                 }
                                 <tr class="table-info">
                                     <td colspan="2" class="text-end fw-bold">Total:</td>
-                                    <td class="fw-bold">@Model.RepairDetails.Sum(r => r.Cost).ToString("C")</td>
+                                    <td class="fw-bold">@Model.RepairDetails.Sum(r => r.Cost).ToString("N0") FCFA</td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -250,7 +248,7 @@
                             <div class="col-md-3">
                                 <label for="repairCost" class="form-label">Coût</label>
                                 <div class="input-group">
-                                    <span class="input-group-text">€</span>
+                                    <span class="input-group-text">FCFA</span>
                                     <input type="number" id="repairCost" name="repairCost" class="form-control" min="0" step="0.01" required />
                                 </div>
                             </div>
@@ -330,43 +328,7 @@
 @section Scripts {
     <script>
         $(document).ready(function() {
-            // Charger les modèles disponibles quand la marque change
-            $('#Car_Make').change(function() {
-                var make = $(this).val();
-                if (make) {
-                    $.getJSON('/api/Cars/models?make=' + make, function(data) {
-                        var modelDropdown = $('#Car_Model');
-                        modelDropdown.empty();
-                        modelDropdown.append($('<option></option>').val('').text('-- Sélectionner un modèle --'));
-                        
-                        // Si des données sont retournées, les ajouter à la liste déroulante
-                        if (data && data.length > 0) {
-                            $.each(data, function(i, model) {
-                                modelDropdown.append($('<option></option>').val(model).text(model));
-                            });
-                        }
-                        // Si aucun modèle n'est trouvé, ajouter une option pour permettre la saisie manuelle
-                        else {
-                            modelDropdown.append($('<option></option>').val('autre').text('Autre (nouveau modèle)'));
-                        }
-                        
-                        // Si un modèle était déjà sélectionné, le resélectionner
-                        if ('@Model.Car.Model') {
-                            modelDropdown.val('@Model.Car.Model');
-                        }
-                    });
-                } else {
-                    $('#Car_Model').empty().append($('<option></option>').val('').text('-- Sélectionner un modèle --'));
-                }
-            });
-            
-            // Si la marque est déjà sélectionnée au chargement de la page, s'assurer que les modèles sont chargés
-            if ($('#Car_Make').val()) {
-                // Seulement si le modèle n'est pas déjà chargé
-                if ($('#Car_Model option').length <= 1) {
-                    $('#Car_Make').trigger('change');
-                }
-            }
+            // Fonctions pour les images et les réparations
         });
         
         // Définir une image comme principale
