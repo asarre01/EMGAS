@@ -1,0 +1,185 @@
+@page
+@model EMGAS.Pages.Reports.SalesModel
+@using EMGAS.Data
+@{
+    ViewData["Title"] = "Rapport des ventes";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Filtrer par période</h5>
+        </div>
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-5">
+                    <label for="StartDate" class="form-label">Date de début</label>
+                    <input type="date" class="form-control" id="StartDate" name="StartDate" value="@Model.StartDate?.ToString("yyyy-MM-dd")" />
+                </div>
+                <div class="col-md-5">
+                    <label for="EndDate" class="form-label">Date de fin</label>
+                    <input type="date" class="form-control" id="EndDate" name="EndDate" value="@Model.EndDate?.ToString("yyyy-MM-dd")" />
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-search me-2"></i>Filtrer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold">@Model.TotalSoldCars</h2>
+                    <p class="mb-0">Véhicules vendus</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold">@Model.TotalSalesValue.ToString("N0")</h2>
+                    <p class="mb-0">Ventes totales (CFA)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold">@Model.AverageSalePrice.ToString("N0")</h2>
+                    <p class="mb-0">Prix moyen (CFA)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold">@Model.TotalProfit.ToString("N0")</h2>
+                    <p class="mb-0">Profit total (CFA)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Ventes par mois</h5>
+                </div>
+                <div class="card-body">
+                    <div style="height: 300px; overflow-y: auto;">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Mois</th>
+                                    <th class="text-end">Ventes</th>
+                                    <th class="text-end">Profit (CFA)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var month in Model.SalesByMonth.OrderByDescending(m => m.Key))
+                                {
+                                    <tr>
+                                        <td>@month.Key</td>
+                                        <td class="text-end">@month.Value</td>
+                                        <td class="text-end">@Model.ProfitByMonth[month.Key].ToString("N0")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Ventes par marque</h5>
+                </div>
+                <div class="card-body">
+                    <div style="height: 300px; overflow-y: auto;">
+                        <ul class="list-group">
+                            @foreach (var make in Model.SalesByMake.OrderByDescending(m => m.Value))
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    @make.Key
+                                    <span class="badge bg-primary rounded-pill">@make.Value</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Détail des ventes (@Model.RecentSales.Count)</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Véhicule</th>
+                            <th>Couleur</th>
+                            <th>Date de vente</th>
+                            <th class="text-end">Prix d'achat</th>
+                            <th class="text-end">Prix de vente</th>
+                            <th class="text-end">Profit</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var car in Model.RecentSales)
+                        {
+                            var profit = (car.SellingPrice ?? 0) - car.PurchasePrice;
+                            var profitClass = profit > 0 ? "text-success" : (profit < 0 ? "text-danger" : "");
+                            
+                            <tr>
+                                <td>@car.Id</td>
+                                <td>@car.Year @car.Make @car.Model</td>
+                                <td>
+                                    <span class="color-dot" style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: @(car.Color.ToLower() == "bleu" ? "blue" : car.Color.ToLower() == "rouge" ? "red" : car.Color.ToLower() == "blanc" ? "white" : car.Color.ToLower() == "noir" ? "black" : car.Color.ToLower() == "gris" ? "gray" : car.Color.ToLower() == "vert" ? "green" : car.Color.ToLower() == "jaune" ? "yellow" : car.Color.ToLower() == "orange" ? "orange" : car.Color.ToLower() == "marron" ? "brown" : car.Color.ToLower() == "beige" ? "beige" : car.Color.ToLower() == "argent" ? "silver" : car.Color.ToLower() == "or" ? "gold" : car.Color.ToLower() == "bronze" ? "#cd7f32" : car.Color.ToLower() == "bordeaux" ? "#800020" : car.Color.ToLower() == "violet" ? "purple" : car.Color.ToLower()); margin-right: 5px; border: 1px solid #ddd;"></span>
+                                    @car.Color
+                                </td>
+                                <td>@car.SaleDate?.ToShortDateString()</td>
+                                <td class="text-end">@car.PurchasePrice.ToString("N0") CFA</td>
+                                <td class="text-end">@(car.SellingPrice?.ToString("N0") ?? "-") CFA</td>
+                                <td class="text-end @profitClass fw-bold">@profit.ToString("N0") CFA</td>
+                                <td>
+                                    <a href="/Cars/Details?id=@car.Id" class="btn btn-sm btn-primary">Détails</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr class="table-primary">
+                            <td colspan="4" class="text-end fw-bold">Total:</td>
+                            <td class="text-end fw-bold">@Model.RecentSales.Sum(c => c.PurchasePrice).ToString("N0") CFA</td>
+                            <td class="text-end fw-bold">@Model.TotalSalesValue.ToString("N0") CFA</td>
+                            <td class="text-end fw-bold">@Model.TotalProfit.ToString("N0") CFA</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Vous pourriez ajouter ici des graphiques avec Chart.js ou d'autres bibliothèques
+        });
+    </script>
+}

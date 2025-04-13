@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EMGAS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d59842f0063f4d24f612b4d9eb9bb9041536c77e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e53a6d24fbbfd79c67f32f3b6cc4745a1c5f27de")]
 [assembly: System.Reflection.AssemblyProductAttribute("EMGAS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EMGAS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
