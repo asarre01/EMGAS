@@ -13,6 +13,12 @@
             <a asp-page="Create" class="btn btn-primary">Ajouter une nouvelle voiture</a>
         </div>
     }
+    else if (!User.Identity.IsAuthenticated)
+    {
+        <div class="alert alert-info mb-3">
+            <i class="bi bi-info-circle-fill me-2"></i> Vous êtes actuellement en mode visiteur. <a asp-page="/Account/Login" class="alert-link">Connectez-vous</a> pour accéder à plus de fonctionnalités.
+        </div>
+    }
 
     <div class="row mb-4">
         <div class="col-md-12">

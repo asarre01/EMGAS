@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nUaSCcxCgsvxZufjOXAEPxD4mACQqKsWiJHArrZQHyA=",
+  "Hash": "0vbi/QrxZC2MZD0vtREntVmgaevp8JWFkX7dItXYxno=",
   "Source": "EMGAS",
   "BasePath": "_content/EMGAS",
   "Mode": "Default",
@@ -542,12 +542,12 @@
       "OriginalItemSpec": "/Users/mac/Desktop/EMGAS/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-b9sayid5wm.gz",
+      "Identity": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-1whj5s99qa.gz",
       "SourceId": "EMGAS",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/EMGAS",
-      "RelativePath": "css/site#[.{fingerprint=b9sayid5wm}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=1whj5s99qa}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -556,8 +556,8 @@
       "RelatedAsset": "/Users/mac/Desktop/EMGAS/wwwroot/css/site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "pw5l7j5n1s",
-      "Integrity": "KbRAtTdCZlkPQMEP8615MCQRMWQsaAwQYpxvPAoetmA=",
+      "Fingerprint": "5a25gfa3lw",
+      "Integrity": "zaYD3FB1zrJFB12gWUbRmoxJhvIAw5wn2WLER6B4kFk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/mac/Desktop/EMGAS/wwwroot/css/site.css"
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "b9sayid5wm",
-      "Integrity": "j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=",
+      "Fingerprint": "1whj5s99qa",
+      "Integrity": "UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
@@ -2724,17 +2724,38 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg",
+      "SourceId": "EMGAS",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mac/Desktop/EMGAS/wwwroot/",
+      "BasePath": "_content/EMGAS",
+      "RelativePath": "uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1)#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lc5kegwft0",
+      "Integrity": "FSa0Clq6IvwUIX3mbkA1/n3l+0JboAqSNLyq9LpC9sk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg"
     }
   ],
   "Endpoints": [
     {
-      "Route": "css/site.b9sayid5wm.css",
-      "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-b9sayid5wm.gz",
+      "Route": "css/site.1whj5s99qa.css",
+      "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-1whj5s99qa.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.003134796238"
+          "Quality": "0.000922509225"
         }
       ],
       "ResponseHeaders": [
@@ -2744,15 +2765,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "318"
+          "Value": "1083"
         },
         {
           "Name": "ETag",
-          "Value": "\"KbRAtTdCZlkPQMEP8615MCQRMWQsaAwQYpxvPAoetmA=\""
+          "Value": "\"zaYD3FB1zrJFB12gWUbRmoxJhvIAw5wn2WLER6B4kFk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 18:25:25 GMT"
+          "Value": "Sun, 13 Apr 2025 20:34:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2772,13 +2793,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "W/\"UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "b9sayid5wm"
+          "Value": "1whj5s99qa"
         },
         {
           "Name": "label",
@@ -2786,12 +2807,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0="
         }
       ]
     },
     {
-      "Route": "css/site.b9sayid5wm.css",
+      "Route": "css/site.1whj5s99qa.css",
       "AssetFile": "/Users/mac/Desktop/EMGAS/wwwroot/css/site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2801,7 +2822,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "667"
+          "Value": "3159"
         },
         {
           "Name": "Content-Type",
@@ -2809,11 +2830,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "\"UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 18:25:25 GMT"
+          "Value": "Sun, 13 Apr 2025 20:34:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2823,7 +2844,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "b9sayid5wm"
+          "Value": "1whj5s99qa"
         },
         {
           "Name": "label",
@@ -2831,13 +2852,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0="
         }
       ]
     },
     {
-      "Route": "css/site.b9sayid5wm.css.gz",
-      "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-b9sayid5wm.gz",
+      "Route": "css/site.1whj5s99qa.css.gz",
+      "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-1whj5s99qa.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2846,7 +2867,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "318"
+          "Value": "1083"
         },
         {
           "Name": "Content-Type",
@@ -2854,11 +2875,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KbRAtTdCZlkPQMEP8615MCQRMWQsaAwQYpxvPAoetmA=\""
+          "Value": "\"zaYD3FB1zrJFB12gWUbRmoxJhvIAw5wn2WLER6B4kFk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 18:25:25 GMT"
+          "Value": "Sun, 13 Apr 2025 20:34:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2876,7 +2897,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "b9sayid5wm"
+          "Value": "1whj5s99qa"
         },
         {
           "Name": "label",
@@ -2884,18 +2905,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-KbRAtTdCZlkPQMEP8615MCQRMWQsaAwQYpxvPAoetmA="
+          "Value": "sha256-zaYD3FB1zrJFB12gWUbRmoxJhvIAw5wn2WLER6B4kFk="
         }
       ]
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-b9sayid5wm.gz",
+      "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-1whj5s99qa.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.003134796238"
+          "Quality": "0.000922509225"
         }
       ],
       "ResponseHeaders": [
@@ -2905,15 +2926,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "318"
+          "Value": "1083"
         },
         {
           "Name": "ETag",
-          "Value": "\"KbRAtTdCZlkPQMEP8615MCQRMWQsaAwQYpxvPAoetmA=\""
+          "Value": "\"zaYD3FB1zrJFB12gWUbRmoxJhvIAw5wn2WLER6B4kFk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 18:25:25 GMT"
+          "Value": "Sun, 13 Apr 2025 20:34:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2933,13 +2954,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "W/\"UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0="
         }
       ]
     },
@@ -2954,7 +2975,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "667"
+          "Value": "3159"
         },
         {
           "Name": "Content-Type",
@@ -2962,11 +2983,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "\"UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 18:25:25 GMT"
+          "Value": "Sun, 13 Apr 2025 20:34:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2976,13 +2997,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-UcYRIvfYTOVVG1ht2bXrdxJ0hPM1NqRas0yyVsipAI0="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-b9sayid5wm.gz",
+      "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-1whj5s99qa.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2991,7 +3012,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "318"
+          "Value": "1083"
         },
         {
           "Name": "Content-Type",
@@ -2999,11 +3020,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KbRAtTdCZlkPQMEP8615MCQRMWQsaAwQYpxvPAoetmA=\""
+          "Value": "\"zaYD3FB1zrJFB12gWUbRmoxJhvIAw5wn2WLER6B4kFk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 18:25:25 GMT"
+          "Value": "Sun, 13 Apr 2025 20:34:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3021,7 +3042,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KbRAtTdCZlkPQMEP8615MCQRMWQsaAwQYpxvPAoetmA="
+          "Value": "sha256-zaYD3FB1zrJFB12gWUbRmoxJhvIAw5wn2WLER6B4kFk="
         }
       ]
     },
@@ -21878,6 +21899,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-F1wMlgb/juW08DFUssW6Pm9EBKfjXXRiSK0F5FgXxJU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg",
+      "AssetFile": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6093"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FSa0Clq6IvwUIX3mbkA1/n3l+0JboAqSNLyq9LpC9sk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 20:47:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FSa0Clq6IvwUIX3mbkA1/n3l+0JboAqSNLyq9LpC9sk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).lc5kegwft0.jpeg",
+      "AssetFile": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6093"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FSa0Clq6IvwUIX3mbkA1/n3l+0JboAqSNLyq9LpC9sk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 20:47:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lc5kegwft0"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FSa0Clq6IvwUIX3mbkA1/n3l+0JboAqSNLyq9LpC9sk="
         }
       ]
     }

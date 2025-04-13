@@ -6,6 +6,13 @@
 }
 
 <div class="container mt-4">
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div class="alert alert-info mb-3">
+            <i class="bi bi-info-circle-fill me-2"></i> Vous êtes en mode visualisation. <a asp-page="/Account/Login" class="alert-link">Connectez-vous</a> pour accéder à plus de fonctionnalités.
+        </div>
+    }
+
     <div class="row">
         <div class="col-md-8">
             @if (Model.Car.Images != null && Model.Car.Images.Any())

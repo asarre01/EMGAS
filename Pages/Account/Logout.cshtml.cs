@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 
 namespace EMGAS.Pages.Account
 {
+    [Authorize]  // Ensure only authenticated users can access logout
     public class LogoutModel : PageModel
     {
         public LogoutModel()

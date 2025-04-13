@@ -7,9 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EMGAS.Pages.Cars
 {
+    // Allow anyone to view the cars listing
+    [AllowAnonymous]
     public class IndexModel : PageModel
     {
         private readonly EMGContext _context;

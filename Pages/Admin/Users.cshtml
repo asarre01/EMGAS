@@ -1,0 +1,252 @@
+@page
+@model EMGAS.Pages.Admin.UsersModel
+@{
+    ViewData["Title"] = "Gestion des utilisateurs";
+}
+
+<div class="container my-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Gestion des utilisateurs</h3>
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#createAdminModal">
+                <i class="bi bi-person-plus"></i> Nouvel administrateur
+            </button>
+        </div>
+        <div class="card-body">
+            @if (Model.StatusMessage != null)
+            {
+                <div class="alert @(Model.IsSuccess ? "alert-success" : "alert-danger") alert-dismissible fade show" role="alert">
+                    @Model.StatusMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <ul class="nav nav-tabs mb-4" id="usersTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="admins-tab" data-bs-toggle="tab" data-bs-target="#admins" type="button">
+                        Administrateurs
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="usersTabContent">
+                <div class="tab-pane fade show active" id="admins">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Email</th>
+                                    <th>Niveau</th>
+                                    <th>Date de création</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var admin in Model.Admins)
+                                {
+                                    <tr>
+                                        <td>@admin.FirstName @admin.LastName</td>
+                                        <td>@admin.Email</td>
+                                        <td>
+                                            <span class="badge rounded-pill bg-@(admin.Level == EMGAS.Data.AdminLevel.SuperAdmin ? "danger" : 
+                                                      admin.Level == EMGAS.Data.AdminLevel.Senior ? "warning" : "info")">
+                                                @admin.Level
+                                            </span>
+                                        </td>
+                                        <td>@admin.CreatedAt.ToString("dd/MM/yyyy")</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-sm btn-outline-primary" 
+                                                        data-bs-toggle="modal" data-bs-target="#editAdminModal"
+                                                        data-id="@admin.Id" 
+                                                        data-email="@admin.Email"
+                                                        data-firstname="@admin.FirstName"
+                                                        data-lastname="@admin.LastName"
+                                                        data-level="@((int)admin.Level)">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                @if (admin.Level != EMGAS.Data.AdminLevel.SuperAdmin || User.HasClaim("AdminLevel", "SuperAdmin"))
+                                                {
+                                                    <button type="button" class="btn btn-sm btn-outline-danger"
+                                                            data-bs-toggle="modal" data-bs-target="#deleteAdminModal"
+                                                            data-id="@admin.Id" data-name="@admin.FirstName @admin.LastName">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Create Admin -->
+<div class="modal fade" id="createAdminModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-page-handler="CreateAdmin">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nouvel administrateur</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="Email" required>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="firstName" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="firstName" name="FirstName" required>
+                        </div>
+                        <div class="col">
+                            <label for="lastName" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="lastName" name="LastName" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="level" class="form-label">Niveau d'accès</label>
+                        <select class="form-select" id="level" name="Level" required>
+                            <option value="0">Junior</option>
+                            <option value="1">Senior</option>
+                            @if (User.HasClaim("AdminLevel", "SuperAdmin"))
+                            {
+                                <option value="2">SuperAdmin</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" name="Password" required minlength="8">
+                        <div class="form-text">Le mot de passe doit contenir au moins 8 caractères, dont des majuscules, minuscules, chiffres et caractères spéciaux.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword" required minlength="8">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Créer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Edit Admin -->
+<div class="modal fade" id="editAdminModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-page-handler="UpdateAdmin">
+                <input type="hidden" id="editId" name="Id" />
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier l'administrateur</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="editEmail" name="Email" required>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="editFirstName" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="editFirstName" name="FirstName" required>
+                        </div>
+                        <div class="col">
+                            <label for="editLastName" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="editLastName" name="LastName" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editLevel" class="form-label">Niveau d'accès</label>
+                        <select class="form-select" id="editLevel" name="Level" required>
+                            <option value="0">Junior</option>
+                            <option value="1">Senior</option>
+                            @if (User.HasClaim("AdminLevel", "SuperAdmin"))
+                            {
+                                <option value="2">SuperAdmin</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Nouveau mot de passe (laisser vide pour conserver l'actuel)</label>
+                        <input type="password" class="form-control" id="newPassword" name="NewPassword" minlength="8">
+                        <div class="form-text">Le mot de passe doit contenir au moins 8 caractères, dont des majuscules, minuscules, chiffres et caractères spéciaux.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Delete Admin -->
+<div class="modal fade" id="deleteAdminModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-page-handler="DeleteAdmin">
+                <input type="hidden" id="deleteId" name="Id" />
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmer la suppression</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes-vous sûr de vouloir supprimer l'administrateur <strong id="deleteName"></strong> ?</p>
+                    <p class="text-danger">Cette action est irréversible.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Populate edit modal
+        const editModal = document.getElementById('editAdminModal');
+        if (editModal) {
+            editModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const id = button.getAttribute('data-id');
+                const email = button.getAttribute('data-email');
+                const firstName = button.getAttribute('data-firstname');
+                const lastName = button.getAttribute('data-lastname');
+                const level = button.getAttribute('data-level');
+                
+                document.getElementById('editId').value = id;
+                document.getElementById('editEmail').value = email;
+                document.getElementById('editFirstName').value = firstName;
+                document.getElementById('editLastName').value = lastName;
+                document.getElementById('editLevel').value = level;
+            });
+        }
+        
+        // Populate delete modal
+        const deleteModal = document.getElementById('deleteAdminModal');
+        if (deleteModal) {
+            deleteModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                
+                document.getElementById('deleteId').value = id;
+                document.getElementById('deleteName').textContent = name;
+            });
+        }
+    </script>
+} 

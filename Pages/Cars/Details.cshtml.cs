@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EMGAS.Pages.Cars
 {
+    // No authorization required for viewing car details
+    [AllowAnonymous]
     public class DetailsModel : PageModel
     {
         private readonly EMGContext _context;

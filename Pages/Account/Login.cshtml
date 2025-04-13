@@ -7,6 +7,12 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            @if (!string.IsNullOrEmpty(Model.ReturnUrl))
+            {
+                <div class="alert alert-info mb-4">
+                    <i class="bi bi-info-circle-fill me-2"></i> Vous devez vous connecter pour accéder à cette page.
+                </div>
+            }
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
                     <h3 class="mb-0">@ViewData["Title"]</h3>

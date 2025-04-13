@@ -88,9 +88,9 @@ builder.Services.AddAuthorization(options =>
               .RequireClaim("AdminLevel", new[] { "Senior", "SuperAdmin" }));
     
     // Définir la politique par défaut qui exige l'authentification
-    // options.FallbackPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
-    //     .RequireAuthenticatedUser()
-    //     .Build();
+    options.FallbackPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
 });
 
 // Register application services

@@ -181,7 +181,6 @@
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/scopedcss/bundle/EMGAS.styles.css
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/scopedcss/projectbundle/EMGAS.bundle.scp.css
-/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-b9sayid5wm.gz
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/8ojjdwg9rs-61n19gt1b8.gz
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/m9clacj5xx-xtxxf3hu2r.gz
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/xuaxmmb3cu-bqjiyaj88i.gz
@@ -260,3 +259,4 @@
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/EMGAS.pdb
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/..genruntimeconfig.cache
 /Users/mac/Desktop/EMGAS/obj/Debug/net9.0/ref/EMGAS.dll
+/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-1whj5s99qa.gz

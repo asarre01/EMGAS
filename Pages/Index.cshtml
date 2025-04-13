@@ -4,76 +4,174 @@
     ViewData["Title"] = "Accueil";
 }
 
-<div class="container mt-4">
-    <div class="jumbotron bg-light p-5 rounded-3">
-        <h1 class="display-4">Bienvenue chez EMGAS</h1>
-        <p class="lead">Spécialiste de la réparation et de la vente de voitures d'occasion de qualité au Sénégal depuis 2010.</p>
-        <hr class="my-4">
-        <p>Découvrez notre sélection de véhicules soigneusement choisis et préparés par nos techniciens qualifiés pour les routes sénégalaises.</p>
-        <a class="btn btn-primary btn-lg" href="/Cars/Index" role="button">Voir l'inventaire</a>
+<!-- Hero Section -->
+<section class="hero-section position-relative mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 py-5">
+                <h1 class="display-4 fw-bold mb-4">Votre partenaire de confiance pour des voitures d'occasion de qualité</h1>
+                <p class="lead mb-4">EMG achète, répare et revend des voitures d'occasion avec un focus sur la qualité et la transparence.</p>
+                <div class="d-flex gap-3">
+                    <a href="/Cars/Index" class="btn btn-primary btn-lg px-4">
+                        Voir notre inventaire
+                    </a>
+                    <a href="/About" class="btn btn-outline-secondary btn-lg px-4">
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                     class="img-fluid rounded shadow-lg" alt="Voiture EMG">
+            </div>
+        </div>
     </div>
+</section>
 
-    <div class="row mt-5">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-car-front me-2"></i>Véhicules de qualité</h5>
-                    <p class="card-text">Tous nos véhicules sont rigoureusement inspectés et préparés avant leur mise en vente pour garantir leur fiabilité.</p>
+<!-- Features Section -->
+<section class="features-section py-5 mb-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Pourquoi choisir EMG Voitures ?</h2>
+            <p class="lead text-muted">Notre engagement envers la qualité et la satisfaction client</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-4 mx-auto" style="width: 70px; height: 70px;">
+                            <i class="bi bi-shield-check fs-3"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Qualité garantie</h4>
+                        <p class="text-muted">Toutes nos voitures sont méticuleusement inspectées et réparées par nos experts techniques.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-tools me-2"></i>Service de réparation</h5>
-                    <p class="card-text">Notre atelier est équipé des meilleurs outils et nos techniciens sont formés pour entretenir tous types de véhicules.</p>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-4 mx-auto" style="width: 70px; height: 70px;">
+                            <i class="bi bi-currency-dollar fs-3"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Prix compétitifs</h4>
+                        <p class="text-muted">Nous proposons des prix justes et transparents pour toutes nos voitures d'occasion.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-shield-check me-2"></i>Garantie incluse</h5>
-                    <p class="card-text">Tous nos véhicules sont vendus avec une garantie, pour que vous puissiez rouler en toute tranquillité.</p>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-4 mx-auto" style="width: 70px; height: 70px;">
+                            <i class="bi bi-headset fs-3"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Support client</h4>
+                        <p class="text-muted">Notre équipe est disponible pour répondre à toutes vos questions et vous accompagner dans votre achat.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Notre engagement</h5>
-                </div>
-                <div class="card-body">
-                    <p>Chez EMGAS, nous nous engageons à:</p>
-                    <ul>
-                        <li>Proposer des véhicules de qualité à des prix compétitifs</li>
-                        <li>Assurer la transparence sur l'historique et l'état des véhicules</li>
-                        <li>Offrir un service client personnalisé et professionnel</li>
-                        <li>Garantir un suivi après-vente de qualité</li>
-                    </ul>
-                </div>
+<!-- Latest Cars Section -->
+<section class="latest-cars-section py-5 mb-5 bg-light">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold mb-1">Nos dernières voitures</h2>
+                <p class="text-muted">Découvrez les derniers ajouts à notre inventaire</p>
             </div>
+            <a href="/Cars/Index" class="btn btn-outline-primary">
+                Voir tout l'inventaire <i class="bi bi-arrow-right"></i>
+            </a>
         </div>
-        <div class="col-md-6">
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Contactez-nous</h5>
+        
+        <div class="row g-4">
+            @foreach (var car in Model.FeaturedCars)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card car-card border-0 shadow-sm h-100">
+                        <div class="position-relative">
+                            @if (car.Images != null && car.Images.Any())
+                            {
+                                <img src="@car.Images.First().ImagePath" class="card-img-top car-image" alt="@car.Make @car.Model">
+                            }
+                            else
+                            {
+                                <img src="https://via.placeholder.com/300x200?text=Pas+d'image" class="card-img-top car-image" alt="Pas d'image">
+                            }
+                            <span class="badge rounded-pill bg-@(car.Status == EMGAS.Data.CarStatus.ForSale ? "success" : 
+                                                               car.Status == EMGAS.Data.CarStatus.Sold ? "danger" : 
+                                                               car.Status == EMGAS.Data.CarStatus.UnderRepair ? "warning" : "secondary") car-status">
+                                @car.Status
+                            </span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-1">@car.Make @car.Model @car.Year</h5>
+                            <div class="d-flex mb-3">
+                                <span class="badge bg-primary me-2">@car.Color</span>
+                                <span class="badge bg-secondary">@car.Mileage km</span>
+                            </div>
+                            <p class="card-text mb-3 text-truncate">@car.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fs-5 fw-bold text-primary">@(car.SellingPrice?.ToString("N0") ?? "-") FCFA</span>
+                                <a href="/Cars/Details?id=@car.Id" class="btn btn-sm btn-outline-primary">
+                                    Détails <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p>Vous avez des questions ou vous souhaitez prendre rendez-vous?</p>
-                    <address>
-                        <i class="bi bi-geo-alt-fill"></i> 123 Avenue Blaise Diagne<br>
-                        Dakar, Sénégal<br>
-                        <i class="bi bi-telephone-fill"></i> <a href="tel:+221338765432">+221 33 876 54 32</a><br>
-                        <i class="bi bi-envelope-fill"></i> <a href="mailto:contact@emgas.sn">contact@emgas.sn</a>
-                    </address>
-                    <p>Heures d'ouverture:</p>
-                    <p>Lundi - Vendredi: 8h - 18h<br>Samedi: 9h - 16h<br>Dimanche: Fermé</p>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 bg-primary text-white shadow">
+                    <div class="card-body p-5 text-center">
+                        <h2 class="fw-bold mb-3">Prêt à trouver votre prochaine voiture ?</h2>
+                        <p class="lead mb-4">Nous avons une large sélection de voitures d'occasion de qualité qui vous attendent.</p>
+                        <a href="/Cars/Index" class="btn btn-light btn-lg px-5">
+                            Parcourir notre inventaire
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+@section Scripts {
+    <script>
+        // Enable feature icons animations on scroll
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const featureIcons = document.querySelectorAll('.feature-icon');
+            featureIcons.forEach(icon => {
+                icon.style.opacity = '0';
+                icon.style.transform = 'translateY(20px)';
+                icon.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            featureIcons.forEach(icon => {
+                observer.observe(icon);
+            });
+        });
+    </script>
+}
