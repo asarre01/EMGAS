@@ -36,7 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/CFA">Partenariat</a>
                         </li>
-                        @if (User.IsInRole("Administrator"))
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-light" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,7 +52,7 @@
                                 </ul>
                             </li>
                         }
-                        else if (User.IsInRole("Manager"))
+                        else if (User.Identity.IsAuthenticated && User.IsInRole("Manager"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-light" href="#" id="managerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,6 +72,14 @@
         </nav>
     </header>
     <div class="container">
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="alert alert-secondary mb-4 text-center">
+                <i class="bi bi-info-circle me-2"></i>
+                Vous êtes en mode consultation uniquement. 
+                <a asp-page="/Account/Login" class="alert-link">Connectez-vous</a> pour accéder aux fonctionnalités de modification et d'ajout.
+            </div>
+        }
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

@@ -12,18 +12,30 @@ namespace EMGAS.Pages.Account
         {
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGetAsync()
         {
-            // Supprimer le cookie d'authentification
-            Response.Cookies.Delete("AuthToken");
+            // Supprimer le cookie d'authentification JWT avec les bonnes options
+            Response.Cookies.Delete("AuthToken", new Microsoft.AspNetCore.Http.CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Strict,
+                Path = "/"
+            });
             
             return RedirectToPage("/Index");
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = "")
+        public IActionResult OnPostAsync(string returnUrl = "")
         {
-            // Supprimer le cookie d'authentification
-            Response.Cookies.Delete("AuthToken");
+            // Supprimer le cookie d'authentification JWT avec les bonnes options
+            Response.Cookies.Delete("AuthToken", new Microsoft.AspNetCore.Http.CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Strict,
+                Path = "/"
+            });
             
             returnUrl ??= Url.Content("~/");
             return LocalRedirect(returnUrl);

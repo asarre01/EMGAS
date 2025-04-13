@@ -3,16 +3,33 @@
 @inject UserManager<EMGAS.Data.ApplicationUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
+@if (User.Identity.IsAuthenticated)
 {
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-person-circle me-1"></i>
             @{
-                var user = await UserManager.GetUserAsync(User);
-                var displayName = user != null ? $"{user.FirstName} {user.LastName}" : "Mon compte";
+                var userName = "Mon compte";
+                
+                // Tenter d'obtenir le nom complet à partir des claims
+                var firstName = User.Claims.FirstOrDefault(c => c.Type == "FirstName")?.Value;
+                var lastName = User.Claims.FirstOrDefault(c => c.Type == "LastName")?.Value;
+                
+                if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
+                {
+                    userName = $"{firstName} {lastName}";
+                }
+                else
+                {
+                    // Fallback sur le UserManager si disponible
+                    var user = await UserManager.GetUserAsync(User);
+                    if (user != null && !string.IsNullOrEmpty(user.FirstName) && !string.IsNullOrEmpty(user.LastName))
+                    {
+                        userName = $"{user.FirstName} {user.LastName}";
+                    }
+                }
             }
-            @displayName
+            @userName
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li>
@@ -22,7 +39,7 @@
             </li>
             <li><hr class="dropdown-divider"></li>
             <li>
-                <form class="form-inline" asp-page="/Account/Logout" method="post">
+                <form class="form-inline" asp-page="/Account/Logout" method="post" id="logoutForm">
                     <button type="submit" class="dropdown-item">
                         <i class="bi bi-box-arrow-right me-2"></i> Se déconnecter
                     </button>
@@ -39,4 +56,18 @@ else
         </a>
     </li>
 }
-</ul> 
+</ul>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        // Script pour gérer la déconnexion en supprimant le cookie JWT
+        document.getElementById('logoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Supprimer le cookie d'authentification
+            document.cookie = "AuthToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; samesite=strict";
+            // Rediriger vers la page d'accueil
+            window.location.href = "/";
+        });
+    </script>
+} 

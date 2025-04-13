@@ -9,7 +9,7 @@
     @if (!User.Identity.IsAuthenticated)
     {
         <div class="alert alert-info mb-3">
-            <i class="bi bi-info-circle-fill me-2"></i> Vous êtes en mode visualisation. <a asp-page="/Account/Login" class="alert-link">Connectez-vous</a> pour accéder à plus de fonctionnalités.
+            <i class="bi bi-info-circle-fill me-2"></i> Vous êtes en mode consultation uniquement. <a asp-page="/Account/Login" class="alert-link">Connectez-vous</a> pour accéder aux fonctionnalités de modification et d'ajout.
         </div>
     }
 
@@ -45,9 +45,8 @@
             }
             else
             {
-                <div class="bg-light p-5 text-center">
-                    <i class="bi bi-image" style="font-size: 5rem;"></i>
-                    <p class="mt-3">Aucune image disponible</p>
+                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 400px;">
+                    <span class="text-muted">Aucune image disponible</span>
                 </div>
             }
         </div>
@@ -114,7 +113,7 @@
                 </div>
             </div>
 
-            @if (Model.IsInManager)
+            @if (User.Identity.IsAuthenticated && Model.IsInManager)
             {
                 <div class="mt-3">
                     <a asp-page="./Edit" asp-route-id="@Model.Car.Id" class="btn btn-warning btn-sm">
@@ -148,7 +147,7 @@
         </div>
     </div>
 
-    @if (Model.IsInManager && Model.Car.RepairDetails.Any())
+    @if (User.Identity.IsAuthenticated && Model.IsInManager && Model.Car.RepairDetails.Any())
     {
         <div class="row mt-4">
             <div class="col-12">

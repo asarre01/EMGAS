@@ -20,6 +20,7 @@ namespace EMGAS.Pages.Cars
 
         public Car Car { get; set; }
         public bool IsInManager { get; set; }
+        public bool CanModify { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, bool? manager)
         {
@@ -39,7 +40,10 @@ namespace EMGAS.Pages.Cars
             }
 
             // Pour déterminer si on affiche la page en mode gestion ou client
-            IsInManager = manager ?? false;
+            IsInManager = User.Identity.IsAuthenticated && (User.IsInRole("Administrator") || User.IsInRole("Manager"));
+            
+            // Détermine si l'utilisateur peut modifier la voiture
+            CanModify = User.Identity.IsAuthenticated && (User.IsInRole("Administrator") || User.IsInRole("Manager"));
 
             return Page();
         }
