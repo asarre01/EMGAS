@@ -1,0 +1,244 @@
+@page
+@model EMGAS.Pages.Reports.InventoryModel
+@using EMGAS.Data
+@{
+    ViewData["Title"] = "Rapport d'inventaire";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold">@Model.TotalCarsCount</h2>
+                    <p class="mb-0">Total des véhicules</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold">@Model.ForSaleCars.Count</h2>
+                    <p class="mb-0">À vendre</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold">@Model.UnderRepairCars.Count</h2>
+                    <p class="mb-0">En réparation</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold">@Model.TotalInventoryValue.ToString("N0")</h2>
+                    <p class="mb-0">Valeur totale (CFA)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Répartition par marque</h5>
+                </div>
+                <div class="card-body">
+                    <div style="height: 300px;">
+                        <!-- Graph par marque -->
+                        <ul class="list-group">
+                            @foreach (var make in Model.CarsByMake.OrderByDescending(m => m.Value).Take(10))
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    @make.Key
+                                    <span class="badge bg-primary rounded-pill">@make.Value</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Répartition par couleur</h5>
+                </div>
+                <div class="card-body">
+                    <div style="height: 300px;">
+                        <!-- Graph par couleur -->
+                        <ul class="list-group">
+                            @foreach (var color in Model.CarsByColor.OrderByDescending(c => c.Value))
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="color-dot" style="display: inline-block; width: 15px; height: 15px; border-radius: 50%; background-color: @(color.Key.ToLower() == "bleu" ? "blue" : color.Key.ToLower() == "rouge" ? "red" : color.Key.ToLower() == "blanc" ? "white" : color.Key.ToLower() == "noir" ? "black" : color.Key.ToLower() == "gris" ? "gray" : color.Key.ToLower() == "vert" ? "green" : color.Key.ToLower() == "jaune" ? "yellow" : color.Key.ToLower() == "orange" ? "orange" : color.Key.ToLower() == "marron" ? "brown" : color.Key.ToLower() == "beige" ? "beige" : color.Key.ToLower() == "argent" ? "silver" : color.Key.ToLower() == "or" ? "gold" : color.Key.ToLower() == "bronze" ? "#cd7f32" : color.Key.ToLower() == "bordeaux" ? "#800020" : color.Key.ToLower() == "violet" ? "purple" : color.Key.ToLower()); margin-right: 10px; border: 1px solid #ddd;"></span>
+                                        @color.Key
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">@color.Value</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Véhicules à vendre (@Model.ForSaleCars.Count)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Marque</th>
+                                    <th>Modèle</th>
+                                    <th>Année</th>
+                                    <th>Couleur</th>
+                                    <th>Kilométrage</th>
+                                    <th class="text-end">Prix</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var car in Model.ForSaleCars)
+                                {
+                                    <tr>
+                                        <td>@car.Make</td>
+                                        <td>@car.Model</td>
+                                        <td>@car.Year</td>
+                                        <td>
+                                            <span class="color-dot" style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: @(car.Color.ToLower() == "bleu" ? "blue" : car.Color.ToLower() == "rouge" ? "red" : car.Color.ToLower() == "blanc" ? "white" : car.Color.ToLower() == "noir" ? "black" : car.Color.ToLower() == "gris" ? "gray" : car.Color.ToLower() == "vert" ? "green" : car.Color.ToLower() == "jaune" ? "yellow" : car.Color.ToLower() == "orange" ? "orange" : car.Color.ToLower() == "marron" ? "brown" : car.Color.ToLower() == "beige" ? "beige" : car.Color.ToLower() == "argent" ? "silver" : car.Color.ToLower() == "or" ? "gold" : car.Color.ToLower() == "bronze" ? "#cd7f32" : car.Color.ToLower() == "bordeaux" ? "#800020" : car.Color.ToLower() == "violet" ? "purple" : car.Color.ToLower()); margin-right: 5px; border: 1px solid #ddd;"></span>
+                                            @car.Color
+                                        </td>
+                                        <td>@car.Mileage km</td>
+                                        <td class="text-end fw-bold">@(car.SellingPrice?.ToString("N0") ?? "-") CFA</td>
+                                        <td>
+                                            <a href="/Cars/Details?id=@car.Id" class="btn btn-sm btn-primary">Détails</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-primary">
+                                    <td colspan="5" class="text-end fw-bold">Valeur totale:</td>
+                                    <td class="text-end fw-bold">@Model.ForSaleCars.Sum(c => c.SellingPrice ?? 0).ToString("N0") CFA</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="table-info">
+                                    <td colspan="5" class="text-end fw-bold">Prix moyen:</td>
+                                    <td class="text-end fw-bold">@Model.AverageCarPrice.ToString("N0") CFA</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">Véhicules en réparation (@Model.UnderRepairCars.Count)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Marque</th>
+                                    <th>Modèle</th>
+                                    <th>Année</th>
+                                    <th>Couleur</th>
+                                    <th>Kilométrage</th>
+                                    <th class="text-end">Prix</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var car in Model.UnderRepairCars)
+                                {
+                                    <tr>
+                                        <td>@car.Make</td>
+                                        <td>@car.Model</td>
+                                        <td>@car.Year</td>
+                                        <td>
+                                            <span class="color-dot" style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: @(car.Color.ToLower() == "bleu" ? "blue" : car.Color.ToLower() == "rouge" ? "red" : car.Color.ToLower() == "blanc" ? "white" : car.Color.ToLower() == "noir" ? "black" : car.Color.ToLower() == "gris" ? "gray" : car.Color.ToLower() == "vert" ? "green" : car.Color.ToLower() == "jaune" ? "yellow" : car.Color.ToLower() == "orange" ? "orange" : car.Color.ToLower() == "marron" ? "brown" : car.Color.ToLower() == "beige" ? "beige" : car.Color.ToLower() == "argent" ? "silver" : car.Color.ToLower() == "or" ? "gold" : car.Color.ToLower() == "bronze" ? "#cd7f32" : car.Color.ToLower() == "bordeaux" ? "#800020" : car.Color.ToLower() == "violet" ? "purple" : car.Color.ToLower()); margin-right: 5px; border: 1px solid #ddd;"></span>
+                                            @car.Color
+                                        </td>
+                                        <td>@car.Mileage km</td>
+                                        <td class="text-end fw-bold">@(car.SellingPrice?.ToString("N0") ?? "-") CFA</td>
+                                        <td>
+                                            <a href="/Cars/Details?id=@car.Id" class="btn btn-sm btn-primary">Détails</a>
+                                            <a href="/Cars/Repairs?id=@car.Id" class="btn btn-sm btn-warning">Réparations</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Dernières ventes (@Model.SoldCars.Count)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Marque</th>
+                                    <th>Modèle</th>
+                                    <th>Année</th>
+                                    <th>Couleur</th>
+                                    <th>Date de vente</th>
+                                    <th class="text-end">Prix de vente</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var car in Model.SoldCars)
+                                {
+                                    <tr>
+                                        <td>@car.Make</td>
+                                        <td>@car.Model</td>
+                                        <td>@car.Year</td>
+                                        <td>
+                                            <span class="color-dot" style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: @(car.Color.ToLower() == "bleu" ? "blue" : car.Color.ToLower() == "rouge" ? "red" : car.Color.ToLower() == "blanc" ? "white" : car.Color.ToLower() == "noir" ? "black" : car.Color.ToLower() == "gris" ? "gray" : car.Color.ToLower() == "vert" ? "green" : car.Color.ToLower() == "jaune" ? "yellow" : car.Color.ToLower() == "orange" ? "orange" : car.Color.ToLower() == "marron" ? "brown" : car.Color.ToLower() == "beige" ? "beige" : car.Color.ToLower() == "argent" ? "silver" : car.Color.ToLower() == "or" ? "gold" : car.Color.ToLower() == "bronze" ? "#cd7f32" : car.Color.ToLower() == "bordeaux" ? "#800020" : car.Color.ToLower() == "violet" ? "purple" : car.Color.ToLower()); margin-right: 5px; border: 1px solid #ddd;"></span>
+                                            @car.Color
+                                        </td>
+                                        <td>@(car.SaleDate?.ToShortDateString() ?? "-")</td>
+                                        <td class="text-end fw-bold">@(car.SellingPrice?.ToString("N0") ?? "-") CFA</td>
+                                        <td>
+                                            <a href="/Cars/Details?id=@car.Id" class="btn btn-sm btn-primary">Détails</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Vous pourriez ajouter ici des graphiques avec Chart.js ou d'autres bibliothèques
+        });
+    </script>
+}

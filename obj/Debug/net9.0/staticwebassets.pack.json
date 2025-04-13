@@ -257,8 +257,28 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.min.map"
     },
     {
+      "Id": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg",
+      "PackagePath": "staticwebassets/uploads/cars/2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg"
+    },
+    {
+      "Id": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg",
+      "PackagePath": "staticwebassets/uploads/cars/44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg"
+    },
+    {
+      "Id": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg",
+      "PackagePath": "staticwebassets/uploads/cars/81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg"
+    },
+    {
       "Id": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg",
       "PackagePath": "staticwebassets/uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg"
+    },
+    {
+      "Id": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg",
+      "PackagePath": "staticwebassets/uploads/cars/d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg"
+    },
+    {
+      "Id": "/Users/mac/Desktop/EMGAS/wwwroot/uploads/cars/f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg",
+      "PackagePath": "staticwebassets/uploads/cars/f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg"
     },
     {
       "Id": "obj/Debug/net9.0/staticwebassets/msbuild.EMGAS.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

@@ -1152,6 +1152,60 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EMGAS</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EMGAS</BasePath>
+      <RelativePath>uploads/cars/2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>r0x9ml8j7f</Fingerprint>
+      <Integrity>a5nUmMeHMXYAQ8PUAPGbYY1OX6gsVmzUFBM8v0vgKd0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EMGAS</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EMGAS</BasePath>
+      <RelativePath>uploads/cars/44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ty2e77dsy0</Fingerprint>
+      <Integrity>e0YDXpjae+7ZmYt/lWS1TrCExEU1AOnV7Qhbi4MVGdM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EMGAS</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EMGAS</BasePath>
+      <RelativePath>uploads/cars/81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>hv6q20w2yw</Fingerprint>
+      <Integrity>TWfGIVWX+GNe+KwTsuzQrlwKuacCQZWHbeHnhdGkq8A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg'))">
       <SourceType>Package</SourceType>
       <SourceId>EMGAS</SourceId>
@@ -1169,6 +1223,42 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EMGAS</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EMGAS</BasePath>
+      <RelativePath>uploads/cars/d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>6wypgj6ciz</Fingerprint>
+      <Integrity>5hjaUnlPxsFkpJynXcyQrgOYk83VwczLAalZeT8eB0I=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EMGAS</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EMGAS</BasePath>
+      <RelativePath>uploads/cars/f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>mhqqywxg14</Fingerprint>
+      <Integrity>mvokdB2AXfkyocYC+kzqzpv/Yh4N9IX0iyLcFfrA+2A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

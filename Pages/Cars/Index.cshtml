@@ -132,13 +132,15 @@
                             <h5 class="card-title">@car.Year @car.Make @car.Model</h5>
                             <p class="card-text">
                                 <small>
-                                    <i class="bi bi-palette"></i> @car.Color &nbsp;
+                                    <i class="bi bi-palette"></i> 
+                                    <span class="color-dot" style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: @(car.Color.ToLower() == "bleu" ? "blue" : car.Color.ToLower() == "rouge" ? "red" : car.Color.ToLower() == "blanc" ? "white" : car.Color.ToLower() == "noir" ? "black" : car.Color.ToLower() == "gris" ? "gray" : car.Color.ToLower() == "vert" ? "green" : car.Color.ToLower() == "jaune" ? "yellow" : car.Color.ToLower() == "orange" ? "orange" : car.Color.ToLower() == "marron" ? "brown" : car.Color.ToLower() == "beige" ? "beige" : car.Color.ToLower() == "argent" ? "silver" : car.Color.ToLower() == "or" ? "gold" : car.Color.ToLower() == "bronze" ? "#cd7f32" : car.Color.ToLower() == "bordeaux" ? "#800020" : car.Color.ToLower() == "violet" ? "purple" : car.Color.ToLower()); margin-right: 5px;"></span>
+                                    @car.Color &nbsp;
                                     <i class="bi bi-speedometer"></i> @car.Mileage km
                                 </small>
                             </p>
                             @if (car.SellingPrice.HasValue)
                             {
-                                <h6 class="card-subtitle mb-2 text-primary">@car.SellingPrice.Value.ToString("C")</h6>
+                                <h6 class="card-subtitle mb-2 text-primary">@car.SellingPrice.Value.ToString("N0") CFA</h6>
                             }
                             <p class="card-text small text-truncate">@car.Description</p>
                         </div>

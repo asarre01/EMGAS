@@ -53,6 +53,19 @@
                                 </ul>
                             </li>
                         }
+                        else if (User.IsInRole("Manager"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="#" id="managerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-briefcase me-1"></i> Gestion
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="managerDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-page="/Cars/Create"><i class="bi bi-plus-circle me-2"></i>Ajouter une voiture</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="/Reports/Inventory"><i class="bi bi-clipboard-data me-2"></i>État de l'inventaire</a></li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

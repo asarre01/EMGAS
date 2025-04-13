@@ -60,7 +60,7 @@
                     <p class="fs-5 fw-bold text-primary">
                         @if (Model.Car.SellingPrice.HasValue)
                         {
-                            @Model.Car.SellingPrice.Value.ToString("C0")
+                            @Model.Car.SellingPrice.Value.ToString("N0") <span>CFA</span>
                         }
                         else
                         {
@@ -73,7 +73,10 @@
                         <tbody>
                             <tr>
                                 <td><i class="bi bi-palette"></i> Couleur</td>
-                                <td class="text-end">@Model.Car.Color</td>
+                                <td class="text-end">
+                                    <span class="color-dot" style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: @(Model.Car.Color.ToLower() == "bleu" ? "blue" : Model.Car.Color.ToLower() == "rouge" ? "red" : Model.Car.Color.ToLower() == "blanc" ? "white" : Model.Car.Color.ToLower() == "noir" ? "black" : Model.Car.Color.ToLower() == "gris" ? "gray" : Model.Car.Color.ToLower() == "vert" ? "green" : Model.Car.Color.ToLower() == "jaune" ? "yellow" : Model.Car.Color.ToLower() == "orange" ? "orange" : Model.Car.Color.ToLower() == "marron" ? "brown" : Model.Car.Color.ToLower() == "beige" ? "beige" : Model.Car.Color.ToLower() == "argent" ? "silver" : Model.Car.Color.ToLower() == "or" ? "gold" : Model.Car.Color.ToLower() == "bronze" ? "#cd7f32" : Model.Car.Color.ToLower() == "bordeaux" ? "#800020" : Model.Car.Color.ToLower() == "violet" ? "purple" : Model.Car.Color.ToLower()); margin-right: 5px;"></span>
+                                    @Model.Car.Color
+                                </td>
                             </tr>
                             <tr>
                                 <td><i class="bi bi-speedometer2"></i> Kilométrage</td>

@@ -18859,6 +18859,252 @@
       ]
     },
     {
+      "Route": "uploads/cars/2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg",
+      "AssetFile": "uploads/cars/2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9304"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"a5nUmMeHMXYAQ8PUAPGbYY1OX6gsVmzUFBM8v0vgKd0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:15:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-a5nUmMeHMXYAQ8PUAPGbYY1OX6gsVmzUFBM8v0vgKd0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).r0x9ml8j7f.jpeg",
+      "AssetFile": "uploads/cars/2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9304"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"a5nUmMeHMXYAQ8PUAPGbYY1OX6gsVmzUFBM8v0vgKd0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:15:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r0x9ml8j7f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-a5nUmMeHMXYAQ8PUAPGbYY1OX6gsVmzUFBM8v0vgKd0="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cars/2922142d-f93b-43e5-852e-228fee5da4b3_téléchargement (3).jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg",
+      "AssetFile": "uploads/cars/44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9807"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e0YDXpjae+7ZmYt/lWS1TrCExEU1AOnV7Qhbi4MVGdM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:16:09 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-e0YDXpjae+7ZmYt/lWS1TrCExEU1AOnV7Qhbi4MVGdM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).ty2e77dsy0.jpeg",
+      "AssetFile": "uploads/cars/44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9807"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e0YDXpjae+7ZmYt/lWS1TrCExEU1AOnV7Qhbi4MVGdM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:16:09 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ty2e77dsy0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-e0YDXpjae+7ZmYt/lWS1TrCExEU1AOnV7Qhbi4MVGdM="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cars/44d22950-5f47-4c9f-9ec4-34c5f487dbb3_téléchargement (4).jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).hv6q20w2yw.jpeg",
+      "AssetFile": "uploads/cars/81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5961"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TWfGIVWX+GNe+KwTsuzQrlwKuacCQZWHbeHnhdGkq8A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:12:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hv6q20w2yw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TWfGIVWX+GNe+KwTsuzQrlwKuacCQZWHbeHnhdGkq8A="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cars/81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg",
+      "AssetFile": "uploads/cars/81c27fe8-ffaa-4f20-af6e-759f36d270bc_téléchargement (2).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5961"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TWfGIVWX+GNe+KwTsuzQrlwKuacCQZWHbeHnhdGkq8A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:12:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TWfGIVWX+GNe+KwTsuzQrlwKuacCQZWHbeHnhdGkq8A="
+        }
+      ]
+    },
+    {
       "Route": "uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg",
       "AssetFile": "uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg",
       "Selectors": [],
@@ -18937,6 +19183,170 @@
         {
           "Name": "label",
           "Value": "uploads/cars/abb8f663-69bc-41cb-b1d8-e99e5b260b9e_téléchargement (1).jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).6wypgj6ciz.jpeg",
+      "AssetFile": "uploads/cars/d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7383"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5hjaUnlPxsFkpJynXcyQrgOYk83VwczLAalZeT8eB0I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:17:22 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6wypgj6ciz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5hjaUnlPxsFkpJynXcyQrgOYk83VwczLAalZeT8eB0I="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cars/d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg",
+      "AssetFile": "uploads/cars/d6951c31-0c78-4510-8517-1cd77ac47cf7_téléchargement (5).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7383"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5hjaUnlPxsFkpJynXcyQrgOYk83VwczLAalZeT8eB0I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:17:22 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5hjaUnlPxsFkpJynXcyQrgOYk83VwczLAalZeT8eB0I="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg",
+      "AssetFile": "uploads/cars/f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8895"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mvokdB2AXfkyocYC+kzqzpv/Yh4N9IX0iyLcFfrA+2A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:18:18 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mvokdB2AXfkyocYC+kzqzpv/Yh4N9IX0iyLcFfrA+2A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cars/f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).mhqqywxg14.jpeg",
+      "AssetFile": "uploads/cars/f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8895"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mvokdB2AXfkyocYC+kzqzpv/Yh4N9IX0iyLcFfrA+2A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 21:18:18 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mhqqywxg14"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mvokdB2AXfkyocYC+kzqzpv/Yh4N9IX0iyLcFfrA+2A="
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cars/f06cb193-e93d-4934-9ec9-e01970e79c4f_téléchargement (6).jpeg"
         }
       ]
     }
