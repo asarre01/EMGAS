@@ -1,0 +1,402 @@
+@page "{id:int}"
+@model EMGAS.Pages.Cars.EditModel
+@{
+    ViewData["Title"] = "Modification de la voiture";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+    <p>Vous modifiez : @Model.Car.Make @Model.Car.Model (@Model.Car.Year)</p>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Car.Id" />
+                
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Informations sur la voiture</h5>
+                    </div>
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.Make" class="control-label">Marque</label>
+                                    <select asp-for="Car.Make" class="form-select" asp-items="Model.Makes">
+                                        <option value="">-- Sélectionner une marque --</option>
+                                    </select>
+                                    <span asp-validation-for="Car.Make" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.Model" class="control-label">Modèle</label>
+                                    <select asp-for="Car.Model" class="form-select" asp-items="Model.Models">
+                                        <option value="">-- Sélectionner un modèle --</option>
+                                    </select>
+                                    <span asp-validation-for="Car.Model" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Car.Year" class="control-label">Année</label>
+                                    <input asp-for="Car.Year" class="form-control" min="2018" max="@DateTime.Now.Year" />
+                                    <span asp-validation-for="Car.Year" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Car.Color" class="control-label">Couleur</label>
+                                    <select asp-for="Car.Color" class="form-select" asp-items="Model.Colors">
+                                        <option value="">-- Sélectionner une couleur --</option>
+                                    </select>
+                                    <span asp-validation-for="Car.Color" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Car.Mileage" class="control-label">Kilométrage</label>
+                                    <input asp-for="Car.Mileage" class="form-control" min="0" />
+                                    <span asp-validation-for="Car.Mileage" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label asp-for="Car.VIN" class="control-label">Numéro VIN</label>
+                                <input asp-for="Car.VIN" class="form-control" />
+                                <span asp-validation-for="Car.VIN" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label asp-for="Car.Description" class="control-label">Description</label>
+                                <textarea asp-for="Car.Description" class="form-control" rows="4"></textarea>
+                                <span asp-validation-for="Car.Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.PurchasePrice" class="control-label">Prix d'achat</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">€</span>
+                                        <input asp-for="Car.PurchasePrice" class="form-control" min="0" step="0.01" />
+                                    </div>
+                                    <span asp-validation-for="Car.PurchasePrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.SellingPrice" class="control-label">Prix de vente</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">€</span>
+                                        <input asp-for="Car.SellingPrice" class="form-control" min="0" step="0.01" />
+                                    </div>
+                                    <span asp-validation-for="Car.SellingPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.PurchaseDate" class="control-label">Date d'achat</label>
+                                    <input asp-for="Car.PurchaseDate" class="form-control" type="date" />
+                                    <span asp-validation-for="Car.PurchaseDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.Status" class="control-label">Statut</label>
+                                    <select asp-for="Car.Status" class="form-select" asp-items="Html.GetEnumSelectList<EMGAS.Data.CarStatus>()"></select>
+                                    <span asp-validation-for="Car.Status" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="./Index" class="btn btn-secondary">Retour à la liste</a>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Images</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        @if (Model.CarImages.Any())
+                        {
+                            @foreach (var image in Model.CarImages)
+                            {
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <img src="@image.ImagePath" class="card-img-top" style="height: 150px; object-fit: cover;" />
+                                        <div class="card-body p-2">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="primaryImage" value="@image.Id" 
+                                                        @(image.IsPrimary ? "checked" : "") onclick="setPrimaryImage(@image.Id)" />
+                                                    <label class="form-check-label small">Image principale</label>
+                                                </div>
+                                                <button type="button" class="btn btn-sm btn-danger" 
+                                                        onclick="deleteImage(@image.Id)">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="col-12">
+                                <div class="alert alert-info">
+                                    Aucune image n'a été téléchargée pour cette voiture.
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    
+                    <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page-handler="UploadImage">
+                        <input type="hidden" name="carId" value="@Model.Car.Id" />
+                        <div class="mb-3">
+                            <label for="newImage" class="form-label">Ajouter une image</label>
+                            <input type="file" id="newImage" name="newImage" class="form-control" accept="image/*" />
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="setAsPrimary" name="setAsPrimary" value="true" />
+                            <label class="form-check-label" for="setAsPrimary">
+                                Définir comme image principale
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success">Télécharger</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Détails des réparations</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.RepairDetails.Any())
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Coût</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var repair in Model.RepairDetails)
+                                {
+                                    <tr>
+                                        <td>@repair.RepairDate.ToShortDateString()</td>
+                                        <td>@repair.Description</td>
+                                        <td>@repair.Cost.ToString("C")</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-danger" 
+                                                    onclick="deleteRepair(@repair.Id)">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr class="table-info">
+                                    <td colspan="2" class="text-end fw-bold">Total:</td>
+                                    <td class="fw-bold">@Model.RepairDetails.Sum(r => r.Cost).ToString("C")</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            Aucune réparation n'a été enregistrée pour cette voiture.
+                        </div>
+                    }
+                    
+                    <form id="repairForm" method="post" asp-page-handler="AddRepair">
+                        <input type="hidden" name="carId" value="@Model.Car.Id" />
+                        <h6 class="mt-4">Ajouter une réparation</h6>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <label for="repairDate" class="form-label">Date</label>
+                                <input type="date" id="repairDate" name="repairDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="repairDescription" class="form-label">Description</label>
+                                <input type="text" id="repairDescription" name="repairDescription" class="form-control" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="repairCost" class="form-label">Coût</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">€</span>
+                                    <input type="number" id="repairCost" name="repairCost" class="form-control" min="0" step="0.01" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="updateStatus" name="updateStatus" value="true" checked />
+                            <label class="form-check-label" for="updateStatus">
+                                Mettre à jour le statut de la voiture en "En réparation"
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Informations</h5>
+                </div>
+                <div class="card-body">
+                    <p>Vous pouvez modifier les informations de la voiture, ajouter des images ou des détails de réparation.</p>
+                    <hr />
+                    <h6>Conseils:</h6>
+                    <ul>
+                        <li>Les images doivent être au format JPG, PNG ou WEBP.</li>
+                        <li>Vous pouvez définir n'importe quelle image comme principale.</li>
+                        <li>Pour marquer une voiture comme vendue, changez son statut.</li>
+                        <li>L'ajout d'une réparation peut automatiquement mettre à jour le statut.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">Danger Zone</h5>
+                </div>
+                <div class="card-body">
+                    <p>Les actions ci-dessous sont permanentes et ne peuvent pas être annulées.</p>
+                    <button type="button" class="btn btn-danger w-100" 
+                            data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        Supprimer cette voiture
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmation de suppression -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmer la suppression</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sûr de vouloir supprimer définitivement la voiture @Model.Car.Make @Model.Car.Model (@Model.Car.Year) ?
+                <br /><br />
+                <div class="alert alert-danger">
+                    <strong>Attention :</strong> Cette action supprimera également toutes les images et les détails de réparation associés.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <form method="post" asp-page-handler="Delete">
+                    <input type="hidden" name="id" value="@Model.Car.Id" />
+                    <button type="submit" class="btn btn-danger">Supprimer définitivement</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Charger les modèles disponibles quand la marque change
+            $('#Car_Make').change(function() {
+                var make = $(this).val();
+                if (make) {
+                    $.getJSON('/api/Cars/models?make=' + make, function(data) {
+                        var modelDropdown = $('#Car_Model');
+                        modelDropdown.empty();
+                        modelDropdown.append($('<option></option>').val('').text('-- Sélectionner un modèle --'));
+                        
+                        // Si des données sont retournées, les ajouter à la liste déroulante
+                        if (data && data.length > 0) {
+                            $.each(data, function(i, model) {
+                                modelDropdown.append($('<option></option>').val(model).text(model));
+                            });
+                        }
+                        // Si aucun modèle n'est trouvé, ajouter une option pour permettre la saisie manuelle
+                        else {
+                            modelDropdown.append($('<option></option>').val('autre').text('Autre (nouveau modèle)'));
+                        }
+                        
+                        // Si un modèle était déjà sélectionné, le resélectionner
+                        if ('@Model.Car.Model') {
+                            modelDropdown.val('@Model.Car.Model');
+                        }
+                    });
+                } else {
+                    $('#Car_Model').empty().append($('<option></option>').val('').text('-- Sélectionner un modèle --'));
+                }
+            });
+            
+            // Si la marque est déjà sélectionnée au chargement de la page, s'assurer que les modèles sont chargés
+            if ($('#Car_Make').val()) {
+                // Seulement si le modèle n'est pas déjà chargé
+                if ($('#Car_Model option').length <= 1) {
+                    $('#Car_Make').trigger('change');
+                }
+            }
+        });
+        
+        // Définir une image comme principale
+        function setPrimaryImage(imageId) {
+            $.post('/Cars/SetPrimaryImage', { imageId: imageId, carId: @Model.Car.Id }, function() {
+                window.location.reload();
+            });
+        }
+        
+        // Supprimer une image
+        function deleteImage(imageId) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cette image ?')) {
+                $.ajax({
+                    url: '/api/Cars/images/' + imageId,
+                    type: 'DELETE',
+                    success: function() {
+                        window.location.reload();
+                    }
+                });
+            }
+        }
+        
+        // Supprimer une réparation
+        function deleteRepair(repairId) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cette réparation ?')) {
+                $.post('/Cars/DeleteRepair', { repairId: repairId }, function() {
+                    window.location.reload();
+                });
+            }
+        }
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

@@ -1,0 +1,34 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<EMGAS.Data.ApplicationUser> SignInManager
+@inject UserManager<EMGAS.Data.ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-1"></i>
+            @{
+                var user = await UserManager.GetUserAsync(User);
+                var displayName = !string.IsNullOrEmpty(user?.FirstName) ? $"{user.FirstName} {user.LastName}" : UserManager.GetUserName(User);
+            }
+            @displayName
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/Account/Manage">Mon profil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <form class="form-inline" asp-page="/Account/Logout" method="post">
+                    <button type="submit" class="dropdown-item">Se déconnecter</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-light" asp-page="/Account/Login">Se connecter</a>
+    </li>
+}
+</ul> 

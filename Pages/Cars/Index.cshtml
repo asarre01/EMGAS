@@ -1,0 +1,263 @@
+@page
+@model EMGAS.Pages.Cars.IndexModel
+@{
+    ViewData["Title"] = "Inventaire des Voitures";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+    
+    @if (User.IsInRole("Administrator"))
+    {
+        <div class="mb-3">
+            <a asp-page="Create" class="btn btn-primary">Ajouter une nouvelle voiture</a>
+        </div>
+    }
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Filtres</h5>
+                </div>
+                <div class="card-body">
+                    <form method="get" id="filterForm">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="make" class="form-label">Marque</label>
+                                <select class="form-select" id="make" name="Make" asp-items="Model.Makes">
+                                    <option value="">Toutes les marques</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="model" class="form-label">Modèle</label>
+                                <select class="form-select" id="model" name="Model" asp-items="Model.Models">
+                                    <option value="">Tous les modèles</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="yearFrom" class="form-label">Année (min)</label>
+                                <input type="number" class="form-control" id="yearFrom" name="YearFrom" value="@Model.Filter.YearFrom" min="1900" max="@DateTime.Now.Year">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="yearTo" class="form-label">Année (max)</label>
+                                <input type="number" class="form-control" id="yearTo" name="YearTo" value="@Model.Filter.YearTo" min="1900" max="@DateTime.Now.Year">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="status" class="form-label">Statut</label>
+                                <select class="form-select" id="status" name="Status" asp-items="Model.Statuses">
+                                    <option value="">Tous les statuts</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="sortBy" class="form-label">Trier par</label>
+                                <select class="form-select" id="sortBy" name="SortBy">
+                                    <option value="newest" selected>Plus récentes</option>
+                                    <option value="price_asc">Prix (croissant)</option>
+                                    <option value="price_desc">Prix (décroissant)</option>
+                                    <option value="year_asc">Année (croissant)</option>
+                                    <option value="year_desc">Année (décroissant)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3 d-flex align-items-end">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeUnavailable" name="IncludeUnavailable" value="true" checked="@Model.Filter.IncludeUnavailable">
+                                    <label class="form-check-label" for="includeUnavailable">
+                                        Inclure les voitures non disponibles
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">Appliquer les filtres</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (Model.Cars.Any())
+        {
+            @foreach (var car in Model.Cars)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            @if (!string.IsNullOrEmpty(car.PrimaryImage))
+                            {
+                                <img src="@car.PrimaryImage" class="card-img-top" alt="@car.Make @car.Model" style="height: 200px; object-fit: cover;">
+                            }
+                            else
+                            {
+                                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 200px;">
+                                    <span class="text-muted">Aucune image</span>
+                                </div>
+                            }
+                            @if (car.Status == EMGAS.Data.CarStatus.Sold)
+                            {
+                                <div class="position-absolute top-0 end-0 bg-danger text-white px-2 py-1 m-2 rounded">
+                                    Vendue
+                                </div>
+                            }
+                            else if (car.Status == EMGAS.Data.CarStatus.NotAvailable)
+                            {
+                                <div class="position-absolute top-0 end-0 bg-secondary text-white px-2 py-1 m-2 rounded">
+                                    Non disponible
+                                </div>
+                            }
+                            else if (car.Status == EMGAS.Data.CarStatus.UnderRepair)
+                            {
+                                <div class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded">
+                                    En réparation
+                                </div>
+                            }
+                            else if (car.Status == EMGAS.Data.CarStatus.ForSale)
+                            {
+                                <div class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded">
+                                    À vendre
+                                </div>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@car.Year @car.Make @car.Model</h5>
+                            <p class="card-text">
+                                <small>
+                                    <i class="bi bi-palette"></i> @car.Color &nbsp;
+                                    <i class="bi bi-speedometer"></i> @car.Mileage km
+                                </small>
+                            </p>
+                            @if (car.SellingPrice.HasValue)
+                            {
+                                <h6 class="card-subtitle mb-2 text-primary">@car.SellingPrice.Value.ToString("C")</h6>
+                            }
+                            <p class="card-text small text-truncate">@car.Description</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a asp-page="Details" asp-route-id="@car.Id" class="btn btn-sm btn-outline-primary">Détails</a>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <div>
+                                    <a asp-page="Edit" asp-route-id="@car.Id" class="btn btn-sm btn-outline-secondary">Modifier</a>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" 
+                                            data-bs-toggle="modal" data-bs-target="#deleteModal" 
+                                            data-car-id="@car.Id" 
+                                            data-car-name="@car.Year @car.Make @car.Model">
+                                        Supprimer
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    Aucune voiture ne correspond aux critères sélectionnés.
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (Model.TotalPages > 1)
+    {
+        <div class="d-flex justify-content-center mt-4">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    @if (Model.CurrentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage - 1))" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    }
+
+                    @for (int i = Math.Max(1, Model.CurrentPage - 2); i <= Math.Min(Model.TotalPages, Model.CurrentPage + 2); i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="javascript:void(0)" onclick="changePage(@i)">@i</a>
+                        </li>
+                    }
+
+                    @if (Model.CurrentPage < Model.TotalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage + 1))" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
+</div>
+
+<!-- Modal de confirmation de suppression -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmer la suppression</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sûr de vouloir supprimer la voiture <span id="carName"></span> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <form method="post" id="deleteForm">
+                    <input type="hidden" id="carIdToDelete" name="id" />
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Mise à jour des modèles en fonction de la marque sélectionnée
+            $('#make').change(function() {
+                var make = $(this).val();
+                $.getJSON('/api/Cars/models?make=' + make, function(data) {
+                    var modelDropdown = $('#model');
+                    modelDropdown.empty();
+                    modelDropdown.append($('<option></option>').val('').text('Tous les modèles'));
+                    $.each(data, function(i, model) {
+                        modelDropdown.append($('<option></option>').val(model).text(model));
+                    });
+                });
+            });
+
+            // Configuration du modal de suppression
+            $('#deleteModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var carId = button.data('car-id');
+                var carName = button.data('car-name');
+                
+                $('#carIdToDelete').val(carId);
+                $('#carName').text(carName);
+                $('#deleteForm').attr('action', '/Cars/Delete?id=' + carId);
+            });
+
+            // Initialisation des valeurs de tri
+            $('#sortBy').val('@Model.Filter.SortBy');
+        });
+
+        function changePage(page) {
+            var form = $('#filterForm');
+            var pageInput = $('<input>').attr('type', 'hidden').attr('name', 'PageNumber').val(page);
+            form.append(pageInput);
+            form.submit();
+        }
+    </script>
+} 

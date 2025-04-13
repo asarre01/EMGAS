@@ -1,19 +1,21 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - _</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - EMGAS</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/_.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">_</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/images/logo.png" alt="EMGAS" height="30" class="d-inline-block align-top me-2" />
+                    EMGAS
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,12 +23,29 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Index">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Cars/Index">Inventaire</a>
                         </li>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Administration
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-page="/Cars/Create">Ajouter une voiture</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="/Reports/Sales">Rapport des ventes</a></li>
+                                    <li><a class="dropdown-item" href="/Reports/Inventory">État de l'inventaire</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="/Admin/Users">Gestion des utilisateurs</a></li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
@@ -37,9 +56,34 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-dark text-light">
         <div class="container">
-            &copy; 2025 - _ - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <div class="row py-3">
+                <div class="col-md-4">
+                    <h5>EMGAS</h5>
+                    <p>Spécialiste de la réparation et vente de voitures d'occasion.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <address>
+                        <i class="bi bi-geo-alt-fill"></i> 123 Rue de la République<br />
+                        75001 Paris, France<br />
+                        <i class="bi bi-telephone-fill"></i> <a href="tel:+33123456789" class="text-light">+33 1 23 45 67 89</a><br />
+                        <i class="bi bi-envelope-fill"></i> <a href="mailto:contact@emgas.fr" class="text-light">contact@emgas.fr</a>
+                    </address>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/Cars/Index" class="text-light">Inventaire des voitures</a></li>
+                        <li><a href="/About" class="text-light">À propos de nous</a></li>
+                        <li><a href="/Privacy" class="text-light">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top pt-3 text-center">
+                &copy; @DateTime.Now.Year - EMGAS - <a asp-area="" asp-page="/Privacy" class="text-light">Confidentialité</a>
+            </div>
         </div>
     </footer>
 

@@ -1,0 +1,197 @@
+@page
+@model EMGAS.Pages.Cars.CreateModel
+@{
+    ViewData["Title"] = "Ajouter une nouvelle voiture";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Informations sur la voiture</h5>
+                    </div>
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.Make" class="control-label">Marque</label>
+                                    <select asp-for="Car.Make" class="form-select" asp-items="Model.Makes">
+                                        <option value="">-- Sélectionner une marque --</option>
+                                    </select>
+                                    <span asp-validation-for="Car.Make" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.Model" class="control-label">Modèle</label>
+                                    <select asp-for="Car.Model" class="form-select" asp-items="Model.Models">
+                                        <option value="">-- Sélectionner un modèle --</option>
+                                    </select>
+                                    <span asp-validation-for="Car.Model" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Car.Year" class="control-label">Année</label>
+                                    <input asp-for="Car.Year" class="form-control" min="2018" max="@DateTime.Now.Year" />
+                                    <span asp-validation-for="Car.Year" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Car.Color" class="control-label">Couleur</label>
+                                    <select asp-for="Car.Color" class="form-select" asp-items="Model.Colors">
+                                        <option value="">-- Sélectionner une couleur --</option>
+                                    </select>
+                                    <span asp-validation-for="Car.Color" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Car.Mileage" class="control-label">Kilométrage</label>
+                                    <input asp-for="Car.Mileage" class="form-control" min="0" />
+                                    <span asp-validation-for="Car.Mileage" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label asp-for="Car.VIN" class="control-label">Numéro VIN</label>
+                                <input asp-for="Car.VIN" class="form-control" />
+                                <span asp-validation-for="Car.VIN" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label asp-for="Car.Description" class="control-label">Description</label>
+                                <textarea asp-for="Car.Description" class="form-control" rows="4"></textarea>
+                                <span asp-validation-for="Car.Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.PurchasePrice" class="control-label">Prix d'achat</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">€</span>
+                                        <input asp-for="Car.PurchasePrice" class="form-control" min="0" step="0.01" />
+                                    </div>
+                                    <span asp-validation-for="Car.PurchasePrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.SellingPrice" class="control-label">Prix de vente</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">€</span>
+                                        <input asp-for="Car.SellingPrice" class="form-control" min="0" step="0.01" />
+                                    </div>
+                                    <span asp-validation-for="Car.SellingPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.PurchaseDate" class="control-label">Date d'achat</label>
+                                    <input asp-for="Car.PurchaseDate" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                    <span asp-validation-for="Car.PurchaseDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Car.Status" class="control-label">Statut</label>
+                                    <select asp-for="Car.Status" class="form-select" asp-items="Html.GetEnumSelectList<EMGAS.Data.CarStatus>()"></select>
+                                    <span asp-validation-for="Car.Status" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="Images" class="control-label">Images</label>
+                                <input type="file" name="Images" id="Images" class="form-control" multiple accept="image/*" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="Index" class="btn btn-secondary">Retour à la liste</a>
+                            <button type="submit" class="btn btn-success">Créer</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Informations</h5>
+                </div>
+                <div class="card-body">
+                    <p>Remplissez le formulaire pour ajouter une nouvelle voiture à l'inventaire.</p>
+                    <p>Les champs marqués d'un astérisque (*) sont obligatoires.</p>
+                    <hr />
+                    <h6>Suggestions:</h6>
+                    <ul>
+                        <li>Les images doivent être au format JPG, PNG ou WEBP.</li>
+                        <li>La première image téléchargée sera définie comme l'image principale.</li>
+                        <li>Le numéro VIN doit être complet et correct.</li>
+                        <li>Veuillez fournir une description détaillée de la voiture.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Charger les modèles disponibles quand la marque change
+            $('#Car_Make').change(function() {
+                var make = $(this).val();
+                if (make) {
+                    $.getJSON('/api/Cars/models?make=' + make, function(data) {
+                        var modelDropdown = $('#Car_Model');
+                        modelDropdown.empty();
+                        modelDropdown.append($('<option></option>').val('').text('-- Sélectionner un modèle --'));
+                        
+                        // Si des données sont retournées, les ajouter à la liste déroulante
+                        if (data && data.length > 0) {
+                            $.each(data, function(i, model) {
+                                modelDropdown.append($('<option></option>').val(model).text(model));
+                            });
+                        }
+                        // Si aucun modèle n'est trouvé, ajouter une option pour permettre la saisie manuelle
+                        else {
+                            modelDropdown.append($('<option></option>').val('autre').text('Autre (nouveau modèle)'));
+                        }
+                    });
+                } else {
+                    $('#Car_Model').empty().append($('<option></option>').val('').text('-- Sélectionner un modèle --'));
+                }
+            });
+            
+            // Si la marque est déjà sélectionnée au chargement de la page, charger les modèles correspondants
+            if ($('#Car_Make').val()) {
+                $('#Car_Make').trigger('change');
+            }
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

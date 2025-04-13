@@ -1,0 +1,141 @@
+@page "{id:int}"
+@model EMGAS.Pages.Cars.RepairsModel
+@{
+    ViewData["Title"] = $"Réparations - {Model.Car.Year} {Model.Car.Make} {Model.Car.Model}";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4 class="mb-0">Ajouter une réparation</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" asp-for="RepairDetail.CarId" />
+                        
+                        <div class="mb-3">
+                            <label asp-for="RepairDetail.Description" class="form-label">Description</label>
+                            <textarea asp-for="RepairDetail.Description" class="form-control" rows="3" required></textarea>
+                            <span asp-validation-for="RepairDetail.Description" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="RepairDetail.Cost" class="form-label">Coût (€)</label>
+                            <input asp-for="RepairDetail.Cost" class="form-control" type="number" step="0.01" min="0" required />
+                            <span asp-validation-for="RepairDetail.Cost" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="RepairDetail.RepairDate" class="form-label">Date de réparation</label>
+                            <input asp-for="RepairDetail.RepairDate" class="form-control" type="date" required />
+                            <span asp-validation-for="RepairDetail.RepairDate" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-plus-circle"></i> Ajouter la réparation
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm mt-3">
+                <div class="card-header">
+                    <h4 class="mb-0">Statut de la voiture</h4>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Statut actuel: 
+                        <span class="badge @(Model.Car.Status == EMGAS.Data.CarStatus.UnderRepair ? "bg-warning" : "bg-success")">
+                            @Model.Car.Status
+                        </span>
+                    </p>
+                    
+                    @if (Model.Car.Status == EMGAS.Data.CarStatus.UnderRepair)
+                    {
+                        <form method="post" asp-page-handler="CompleteRepairs" asp-route-id="@Model.Car.Id">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="bi bi-check-circle"></i> Marquer les réparations comme terminées
+                                </button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4 class="mb-0">Historique des réparations</h4>
+                </div>
+                <div class="card-body">
+                    @if (Model.Car.RepairDetails.Any())
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th class="text-end">Coût</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var repair in Model.Car.RepairDetails.OrderByDescending(r => r.RepairDate))
+                                {
+                                    <tr>
+                                        <td>@repair.RepairDate.ToShortDateString()</td>
+                                        <td>@repair.Description</td>
+                                        <td class="text-end">@repair.Cost.ToString("C0")</td>
+                                        <td class="text-end">
+                                            <form method="post" asp-page-handler="DeleteRepair" 
+                                                  asp-route-repairId="@repair.Id" asp-route-carId="@Model.Car.Id"
+                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette réparation?')">
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="fw-bold">
+                                    <td colspan="2" class="text-end">Total:</td>
+                                    <td class="text-end">@Model.Car.RepairDetails.Sum(r => r.Cost).ToString("C0")</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="text-center p-4">
+                            <i class="bi bi-tools" style="font-size: 3rem;"></i>
+                            <p class="mt-2">Aucune réparation enregistrée pour cette voiture.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <a asp-page="./Details" asp-route-id="@Model.Car.Id" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Retour aux détails
+        </a>
+        <a asp-page="./Index" class="btn btn-outline-secondary ms-2">
+            Retour à la liste
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

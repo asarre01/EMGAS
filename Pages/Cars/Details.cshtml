@@ -1,0 +1,186 @@
+@page "{id:int}"
+@model EMGAS.Pages.Cars.DetailsModel
+@using EMGAS.Data
+@{
+    ViewData["Title"] = $"{Model.Car.Year} {Model.Car.Make} {Model.Car.Model}";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            @if (Model.Car.Images != null && Model.Car.Images.Any())
+            {
+                <div id="carouselCar" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @{
+                            var firstImage = true;
+                            foreach (var image in Model.Car.Images)
+                            {
+                                <div class="carousel-item @(firstImage ? "active" : "")">
+                                    <img src="@image.ImagePath" class="d-block w-100" alt="@Model.Car.Make @Model.Car.Model">
+                                </div>
+                                firstImage = false;
+                            }
+                        }
+                    </div>
+                    @if (Model.Car.Images.Count > 1)
+                    {
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCar" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Précédent</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselCar" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Suivant</span>
+                        </button>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="bg-light p-5 text-center">
+                    <i class="bi bi-image" style="font-size: 5rem;"></i>
+                    <p class="mt-3">Aucune image disponible</p>
+                </div>
+            }
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">@Model.Car.Year @Model.Car.Make @Model.Car.Model</h3>
+                </div>
+                <div class="card-body">
+                    <p class="fs-5 fw-bold text-primary">
+                        @if (Model.Car.SellingPrice.HasValue)
+                        {
+                            @Model.Car.SellingPrice.Value.ToString("C0")
+                        }
+                        else
+                        {
+                            <span class="text-muted">Prix non disponible</span>
+                        }
+                    </p>
+                    <hr />
+
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td><i class="bi bi-palette"></i> Couleur</td>
+                                <td class="text-end">@Model.Car.Color</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-speedometer2"></i> Kilométrage</td>
+                                <td class="text-end">@Model.Car.Mileage km</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-card-checklist"></i> VIN</td>
+                                <td class="text-end">@Model.Car.VIN</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-tag"></i> Statut</td>
+                                <td class="text-end">
+                                    @{
+                                        var statusClass = Model.Car.Status switch
+                                        {
+                                            CarStatus.ForSale => "success",
+                                            CarStatus.Sold => "danger",
+                                            CarStatus.UnderRepair => "warning",
+                                            _ => "secondary"
+                                        };
+                                    }
+                                    <span class="badge bg-@statusClass">@Model.Car.Status</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    @if (Model.Car.Status == CarStatus.ForSale)
+                    {
+                        <a href="mailto:contact@emgas.com?subject=Demande d'information pour @Model.Car.Year @Model.Car.Make @Model.Car.Model" 
+                           class="btn btn-primary btn-lg w-100">
+                            <i class="bi bi-envelope"></i> Contacter pour plus d'informations
+                        </a>
+                    }
+                </div>
+            </div>
+
+            @if (Model.IsInManager)
+            {
+                <div class="mt-3">
+                    <a asp-page="./Edit" asp-route-id="@Model.Car.Id" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil"></i> Modifier
+                    </a>
+                    <a asp-page="./Repairs" asp-route-id="@Model.Car.Id" class="btn btn-info btn-sm">
+                        <i class="bi bi-tools"></i> Gérer les réparations
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4 class="mb-0">Description</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.Car.Description))
+                    {
+                        <p>@Model.Car.Description</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted">Aucune description disponible</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.IsInManager && Model.Car.RepairDetails.Any())
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h4 class="mb-0">Historique des réparations</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th class="text-end">Coût</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var repair in Model.Car.RepairDetails.OrderByDescending(r => r.RepairDate))
+                                {
+                                    <tr>
+                                        <td>@repair.RepairDate.ToShortDateString()</td>
+                                        <td>@repair.Description</td>
+                                        <td class="text-end">@repair.Cost.ToString("C0")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="fw-bold">
+                                    <td colspan="2" class="text-end">Total:</td>
+                                    <td class="text-end">@Model.Car.RepairDetails.Sum(r => r.Cost).ToString("C0")</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-page="./Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Retour à la liste
+        </a>
+    </div>
+</div> 

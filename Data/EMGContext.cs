@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EMGAS.Data
 {
@@ -73,6 +74,7 @@ namespace EMGAS.Data
         public int Id { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
+        [Range(2018, 2100, ErrorMessage = "L'année doit être 2018 ou plus récente")]
         public int Year { get; set; }
         public string VIN { get; set; }
         public decimal PurchasePrice { get; set; }

@@ -1,3 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using EMGAS.Middleware;
+using EMGAS.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,7 +14,7 @@ builder.Services.AddControllers(); // Ajouter le support pour les contrôleurs A
 
 // Add DbContext
 builder.Services.AddDbContext<EMGAS.Data.EMGContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add Identity (remove duplicate AddIdentityCore)
 builder.Services.AddIdentity<EMGAS.Data.ApplicationUser, Microsoft.AspNetCore.Identity.IdentityRole>(options =>
@@ -49,7 +57,7 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
         IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(
-            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? "DefaultSecretKey12345678901234567890")),
         ClockSkew = TimeSpan.Zero
     };
 });
@@ -80,9 +88,9 @@ builder.Services.AddAuthorization(options =>
               .RequireClaim("AdminLevel", new[] { "Senior", "SuperAdmin" }));
     
     // Définir la politique par défaut qui exige l'authentification
-    options.FallbackPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
-        .RequireAuthenticatedUser()
-        .Build();
+    // options.FallbackPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
+    //     .RequireAuthenticatedUser()
+    //     .Build();
 });
 
 // Register application services
@@ -110,6 +118,26 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Initialiser les données
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        // Initialiser l'administrateur et les données de démo
+        await SeedData.Initialize(
+            services, 
+            "admin@emgas.com", 
+            "Admin123!"  // Mot de passe à changer en production !
+        );
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Une erreur s'est produite lors de l'initialisation des données.");
+    }
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -118,11 +146,17 @@ app.UseCors("AllowSpecificOrigins");
 
 app.UseRouting();
 
+// Ajouter notre middleware de gestion des cookies JWT
+app.UseJwtCookieAuthentication();
+
 // Add middleware for authentication and authorization - Ordre important
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapRazorPages().RequireAuthorization(); // Exiger l'authentification par défaut pour toutes les pages Razor
-app.MapControllers(); // Si vous utilisez des contrôleurs API
+// Ne pas exiger l'authentification par défaut pour toutes les pages Razor
+app.MapRazorPages();
+
+// Mapper les contrôleurs API
+app.MapControllers();
 
 app.Run();

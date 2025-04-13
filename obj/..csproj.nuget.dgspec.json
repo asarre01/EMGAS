@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "/Users/mac/Desktop/EMGAS/..csproj",
-        "projectName": ".",
+        "projectName": "EMGAS",
         "projectPath": "/Users/mac/Desktop/EMGAS/..csproj",
         "packagesPath": "/Users/mac/.nuget/packages/",
         "outputPath": "/Users/mac/Desktop/EMGAS/obj/",
@@ -57,6 +57,10 @@
               "version": "[9.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.4, )"
             },
