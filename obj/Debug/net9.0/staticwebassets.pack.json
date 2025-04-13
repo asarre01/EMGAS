@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/EMGAS.b137z20ai2.bundle.scp.css"
     },
     {
+      "Id": "/Users/mac/Desktop/EMGAS/wwwroot/avatar.jpg",
+      "PackagePath": "staticwebassets/avatar.jpg"
+    },
+    {
       "Id": "/Users/mac/Desktop/EMGAS/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },

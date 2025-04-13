@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zOMzPyuzMPCiV3zTQdGGrIBsYCo0PI7NJ1c9H1Wm1Is=",
+  "Hash": "JGBk59tsETexrU6ceXnWuAgaAUuYCn+yj/iimVvTQ20=",
   "Source": "EMGAS",
   "BasePath": "_content/EMGAS",
   "Mode": "Default",
@@ -1401,6 +1401,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/scopedcss/projectbundle/EMGAS.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/mac/Desktop/EMGAS/wwwroot/avatar.jpg",
+      "SourceId": "EMGAS",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mac/Desktop/EMGAS/wwwroot/",
+      "BasePath": "_content/EMGAS",
+      "RelativePath": "avatar#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ps8lcjxcy7",
+      "Integrity": "yef2z6MAE8pe4rbnNrwJRW+t7Aa5EzTj6kopbrBo0KM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/avatar.jpg"
     },
     {
       "Identity": "/Users/mac/Desktop/EMGAS/wwwroot/css/site.css",
@@ -2853,6 +2874,88 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "avatar.jpg",
+      "AssetFile": "/Users/mac/Desktop/EMGAS/wwwroot/avatar.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "101457"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yef2z6MAE8pe4rbnNrwJRW+t7Aa5EzTj6kopbrBo0KM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 22:17:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yef2z6MAE8pe4rbnNrwJRW+t7Aa5EzTj6kopbrBo0KM="
+        }
+      ]
+    },
+    {
+      "Route": "avatar.ps8lcjxcy7.jpg",
+      "AssetFile": "/Users/mac/Desktop/EMGAS/wwwroot/avatar.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "101457"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yef2z6MAE8pe4rbnNrwJRW+t7Aa5EzTj6kopbrBo0KM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 22:17:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ps8lcjxcy7"
+        },
+        {
+          "Name": "label",
+          "Value": "avatar.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yef2z6MAE8pe4rbnNrwJRW+t7Aa5EzTj6kopbrBo0KM="
+        }
+      ]
+    },
     {
       "Route": "css/site.1whj5s99qa.css",
       "AssetFile": "/Users/mac/Desktop/EMGAS/obj/Debug/net9.0/compressed/dyukpyix8w-1whj5s99qa.gz",

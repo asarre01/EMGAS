@@ -1,8 +1,80 @@
 ﻿@page
 @model EMGAS.Pages.PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "À propos du projet";
 }
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center mb-4">@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow mb-5">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h2 class="card-title text-primary">Projet Scolaire EMGAS</h2>
+                        <p class="lead">Ce projet a été développé dans le cadre de ma formation à l'École Supérieure Polytechnique de Dakar.</p>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-4 text-center">
+                            <img src="/avatar.jpg" alt="Abdoulaye Sarré" class="img-fluid rounded-circle mb-3" style="max-width: 200px; border: 3px solid #007bff;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h3 class="card-title text-primary">À propos du développeur</h3>
+                                    <p>Bonjour, je m'appelle <strong>Abdoulaye Sarré</strong>. Je suis étudiant en deuxième année de technologie à l'École Supérieure Polytechnique de Dakar. Je suis passionné par le développement FULLSTACK.</p>
+                                    <div class="mt-3">
+                                        <a href="https://github.com/asarre01" target="_blank" class="btn btn-primary">
+                                            <i class="bi bi-github"></i> Voir mon profil GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-light mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title text-primary">À propos du projet</h3>
+                            <p>EMGAS est un projet scolaire visant à mettre en pratique mes compétences en développement web. Ce projet démontre l'utilisation des technologies ASP.NET Core pour créer une application web moderne et responsive.</p>
+                            <p>Le projet intègre les compétences suivantes :</p>
+                            <div class="row text-center">
+                                <div class="col-md-3 mb-3">
+                                    <div class="p-3 bg-primary text-white rounded">
+                                        <i class="bi bi-code-slash fs-3"></i>
+                                        <p class="mb-0">C# / .NET</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="p-3 bg-primary text-white rounded">
+                                        <i class="bi bi-filetype-html fs-3"></i>
+                                        <p class="mb-0">HTML/CSS</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="p-3 bg-primary text-white rounded">
+                                        <i class="bi bi-database fs-3"></i>
+                                        <p class="mb-0">SQL Lite</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="p-3 bg-primary text-white rounded">
+                                        <i class="bi bi-bootstrap fs-3"></i>
+                                        <p class="mb-0">Bootstrap</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Aucun script supplémentaire nécessaire pour le moment
+    </script>
+}

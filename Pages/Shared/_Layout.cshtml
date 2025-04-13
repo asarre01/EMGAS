@@ -16,8 +16,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">
-                    <img src="~/images/logo.png" alt="EMGAS" height="40" class="d-inline-block align-top me-2" />
-                    <span class="fw-bold">EMG</span> <span class="text-light">Voitures</span>
+                     <span class="fw-bold">EMGAS</span> <span class="text-light">Voitures</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +34,7 @@
                             <a class="nav-link text-light" asp-area="" asp-page="/About">À propos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/CFA">Partenariat CFA</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/CFA">Partenariat</a>
                         </li>
                         @if (User.IsInRole("Administrator"))
                         {
@@ -113,13 +112,13 @@
                     <ul class="list-unstyled footer-links">
                         <li class="mb-2"><a href="/Cars/Index" class="text-light"><i class="bi bi-chevron-right me-1"></i>Inventaire des voitures</a></li>
                         <li class="mb-2"><a href="/About" class="text-light"><i class="bi bi-chevron-right me-1"></i>À propos de nous</a></li>
-                        <li class="mb-2"><a href="/CFA" class="text-light"><i class="bi bi-chevron-right me-1"></i>Partenariat CFA</a></li>
+                        <li class="mb-2"><a href="/CFA" class="text-light"><i class="bi bi-chevron-right me-1"></i>Partenariat</a></li>
                         <li><a href="/Privacy" class="text-light"><i class="bi bi-chevron-right me-1"></i>Politique de confidentialité</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-top py-3 text-center">
-                &copy; @DateTime.Now.Year - EMG Voitures - <a asp-area="" asp-page="/Privacy" class="text-light">Confidentialité</a>
+                &copy; @DateTime.Now.Year - EMG Voitures - <a asp-area="" asp-page="/Privacy" class="text-light">Dev by asarre01</a>
             </div>
         </div>
     </footer>
